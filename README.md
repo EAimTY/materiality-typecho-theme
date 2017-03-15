@@ -4,7 +4,9 @@
 
 ### Materiality
 `[məˌtɪrɪ'ælətɪ]`
+
 `The quality or character of being material or composed of matter.`
+
 `n.物质性；实质性；实体性`
 
 ## Version
