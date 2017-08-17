@@ -25,8 +25,8 @@ $this->need('header.php');
     <div class="card-spacer"></div>
   <?php endwhile; ?>
   <div class="page-nav">
-    <div class="prev-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'上一页\'}"><i class="mdui-icon typecho-material-theme-icons mdui-text-color-pink-accent">&#xe90c;</i></button>'); ?></div>
-    <div class="next-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'下一页\'}"><i class="mdui-icon typecho-material-theme-icons mdui-text-color-pink-accent">&#xe90d;</i></button>', 'next'); ?></div>
+    <div class="prev-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'上一页\'}"><i class="mdui-icon materiality-icons mdui-text-color-pink-accent">&#xe90c;</i></button>'); ?></div>
+    <div class="next-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'下一页\'}"><i class="mdui-icon materiality-icons mdui-text-color-pink-accent">&#xe90d;</i></button>', 'next'); ?></div>
   </div>
 </div>
 <?php $this->need('footer.php'); ?>

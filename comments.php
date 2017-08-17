@@ -30,7 +30,7 @@
   <div id="comments">
     <?php $this->comments()->to($comments); ?>
     <div class="mdui-chip">
-      <span class="mdui-chip-icon"><i class="mdui-icon typecho-material-theme-icons">&#xe904;</i></span>
+      <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe904;</i></span>
       <span class="mdui-chip-title"><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></span>
     </div>
     <?php if ($comments->have()): ?>
@@ -60,7 +60,7 @@
                 <input name="url" class="mdui-textfield-input" type="url" value="<?php $this->remember('url'); ?>" />
               </div>
             <?php endif; ?>
-            <?php $comments->cancelReply('<div class="mdui-chip"><span class="mdui-chip-icon"><i class="mdui-icon typecho-material-theme-icons">&#xe90b;</i></span><span class="mdui-chip-title">取消回复</span></div>'); ?>
+            <?php $comments->cancelReply('<div class="mdui-chip"><span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90b;</i></span><span class="mdui-chip-title">取消回复</span></div>'); ?>
             <div class="mdui-textfield mdui-textfield-floating-label">
               <label class="mdui-textfield-label">内容</label>
               <textarea name="text" class="mdui-textfield-input" type="text" rows="8"><?php $this->remember('text'); ?></textarea>
@@ -74,7 +74,7 @@
       <div class="card-spacer"></div>
     <?php else: ?>
       <div class="mdui-chip">
-        <span class="mdui-chip-icon"><i class="mdui-icon typecho-material-theme-icons">&#xe90a;</i></span>
+        <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90a;</i></span>
         <span class="mdui-chip-title">评论已关闭</span>
       </div>
     <?php endif; ?>

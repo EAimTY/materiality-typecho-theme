@@ -10,7 +10,7 @@
 `n.物质性；实质性；实体性`
 
 ## Version
-1.0.1
+1.0.2
 
 ## Feature
 - 质感设计风格
@@ -29,4 +29,4 @@
 https://www.eaimty.com/
 
 ## License
-GPL v2
+GPL v3

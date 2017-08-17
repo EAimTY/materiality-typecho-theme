@@ -30,7 +30,7 @@
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
-      <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer'}"><i class="mdui-icon typecho-material-theme-icons">&#xe900;</i></span>
+      <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer'}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
       <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
       <div class="mdui-toolbar-spacer"></div>
     </div>
@@ -57,7 +57,7 @@
           <div class="mdui-collapse-item">
             <a href="<?php $category->permalink(); ?>">
               <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe901;</i>
+                <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe901;</i>
                 <div class="mdui-list-item-content"><?php $category->name(); ?></div>
               </div>
             </a>
@@ -68,7 +68,7 @@
           <div class="mdui-collapse-item">
             <a href="<?php $pages->permalink(); ?>">
               <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe902;</i>
+                <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe902;</i>
                 <div class="mdui-list-item-content"><?php $pages->title(); ?></div>
               </div>
             </a>
@@ -77,9 +77,9 @@
         <?php if ($this->options->drawer && in_array('showposts', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe903;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe903;</i>
               <div class="mdui-list-item-content">最新文章</div>
-              <i class="mdui-collapse-item-arrow mdui-icon typecho-material-theme-icons">&#xe908;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->widget('Widget_Contents_Post_Recent')->parse('<a href="{permalink}" class="mdui-list-item mdui-ripple drawer-list-item">{title}</a>'); ?>
@@ -89,9 +89,9 @@
         <?php if ($this->options->drawer && in_array('showcomments', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe904;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe904;</i>
               <div class="mdui-list-item-content">最新评论</div>
-              <i class="mdui-collapse-item-arrow mdui-icon typecho-material-theme-icons">&#xe908;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -104,9 +104,9 @@
         <?php if ($this->options->drawer && in_array('showarchives', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe905;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe905;</i>
               <div class="mdui-list-item-content">按月归档</div>
-              <i class="mdui-collapse-item-arrow mdui-icon typecho-material-theme-icons">&#xe908;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=F Y')->parse('<a href="{permalink}" class="mdui-list-item mdui-ripple drawer-list-item">{date}</a>'); ?>
@@ -116,9 +116,9 @@
         <?php if ($this->options->drawer && in_array('showtags', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe906;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe906;</i>
               <div class="mdui-list-item-content">常用标签</div>
-              <i class="mdui-collapse-item-arrow mdui-icon typecho-material-theme-icons">&#xe908;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=5')->to($tags); ?>
@@ -135,9 +135,9 @@
         <?php if ($this->options->links): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon typecho-material-theme-icons">&#xe907;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe907;</i>
               <div class="mdui-list-item-content">友情链接</div>
-              <i class="mdui-collapse-item-arrow mdui-icon typecho-material-theme-icons">&#xe908;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->options->links(); ?>
