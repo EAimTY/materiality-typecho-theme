@@ -4,7 +4,7 @@
  *
  * @package Materiality
  * @author EAimTY
- * @version 1.0.1
+ * @version 1.0.2
  * @link https://www.eaimty.com/
  */
 $this->need('header.php');
