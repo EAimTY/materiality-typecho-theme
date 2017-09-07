@@ -32,6 +32,24 @@
       <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
       <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
       <div class="mdui-toolbar-spacer"></div>
+      <?php if ($this->options->appbar && in_array('showadmin', $this->options->appbar)): ?>
+        <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '管理后台'}" mdui-menu="{target: '#admin-menu'}"><i class="mdui-icon materiality-icons">&#xe916;</i></span>
+        <ul class="mdui-menu" id="admin-menu">
+          <?php if($this->user->hasLogin()): ?>
+            <li class="mdui-menu-item">
+              <a href="<?php $this->options->adminUrl(); ?>" class="mdui-ripple"><?php $this->user->screenName(); ?></a>
+            </li>
+            <li class="mdui-divider"></li>
+            <li class="mdui-menu-item">
+              <a href="<?php $this->options->logoutUrl(); ?>" class="mdui-ripple">退出</a>
+            </li>
+          <?php else: ?>
+            <li class="mdui-menu-item">
+              <a href="<?php $this->options->adminUrl('login.php'); ?>" class="mdui-ripple">登录</a>
+            </li>
+          <?php endif; ?>
+        </ul>
+      <?php endif; ?>
     </div>
   </header>
   <div class="mdui-drawer" id="main-drawer">
@@ -44,7 +62,7 @@
           <div class="drawer-description"><?php $this->options->description(); ?></div>
         <?php endif; ?>
       </div>
-      <?php if ($this->options->footer && in_array('showsearch', $this->options->drawer)): ?>
+      <?php if ($this->options->drawer && in_array('showsearch', $this->options->drawer)): ?>
         <form class="mdui-textfield mdui-textfield-floating-label drawer-search" method="post" action="">
           <label class="mdui-textfield-label drawer-search-content">搜索</label>
           <input class="mdui-textfield-input" type="text" name="s" />
