@@ -38,16 +38,18 @@
     <div class="mdui-list" mdui-collapse="{accordion: true}">
       <div class="drawer-billboard">
         <?php if ($this->options->avatar): ?>
-          <a href="<?php $this->options->siteUrl(); ?>"><img class="drawer-logo" src="<?php $this->options->avatar(); ?>" /></a>
+          <a href="<?php $this->options->siteUrl(); ?>"><img class="drawer-logo <?php if ($this->options->footer && in_array('borderradius', $this->options->drawer)): ?>border-radius<?php endif; ?>" src="<?php $this->options->avatar(); ?>" /></a>
         <?php endif; ?>
         <?php if ($this->options->description): ?>
           <div class="drawer-description"><?php $this->options->description(); ?></div>
         <?php endif; ?>
       </div>
-      <form class="mdui-textfield mdui-textfield-floating-label drawer-search" method="post" action="">
-        <label class="mdui-textfield-label drawer-search-content">搜索</label>
-        <input class="mdui-textfield-input" type="text" name="s" />
-      </form>
+      <?php if ($this->options->footer && in_array('showsearch', $this->options->drawer)): ?>
+        <form class="mdui-textfield mdui-textfield-floating-label drawer-search" method="post" action="">
+          <label class="mdui-textfield-label drawer-search-content">搜索</label>
+          <input class="mdui-textfield-input" type="text" name="s" />
+        </form>
+      <?php endif; ?>
       <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
       <?php while ($category->next()): ?>
         <div class="mdui-collapse-item">

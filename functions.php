@@ -21,6 +21,7 @@ function themeConfig($form) {
   $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接代码'), _t('按照 <i>&lt;a href="友情链接URL" class="mdui-list-item mdui-ripple drawer-list-item" target="_blank"&gt;友情链接名称&lt;/a&gt;</i> 的格式输入友情链接，一条一行'));
   $form->addInput($links);
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', array(
+    'borderradius' => _t('显示侧边栏Logo为圆形'),
     'showsearch' => _t('显示搜索框'),
     'showposts' => _t('显示最新文章'),
     'showcomments' => _t('显示最新评论'),

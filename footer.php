@@ -1,3 +1,4 @@
+<div class="card-spacer"></div>
 <footer class="mdui-container-fluid footer-nav mdui-color-theme">
   <div class="footer-area footer-left mdui-col-sm-4">
     <div class="footer-icons">
