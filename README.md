@@ -25,6 +25,9 @@
 3. 进入设置外观并自定义主题
 
 ## Demo
+
+![Demo](https://raw.githubusercontent.com/EAimTY/materiality-typecho-theme/master/screenshot.png)
+
 https://www.eaimty.com/
 
 ## License
