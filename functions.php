@@ -21,24 +21,25 @@ function themeConfig($form) {
   $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接代码'), _t('按照 <i>&lt;a href="友情链接URL" class="mdui-list-item mdui-ripple drawer-list-item" target="_blank"&gt;友情链接名称&lt;/a&gt;</i> 的格式输入友情链接，一条一行'));
   $form->addInput($links);
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(
+    'showrss' => _t('显示RSS'),
     'showadmin' => _t('显示管理后台按钮'),
   ),
-  array('showadmin'), _t('应用栏选项'));
+  array('showrss', 'showadmin'), _t('应用栏选项'));
   $form->addInput($appbar->multiMode());
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', array(
     'borderradius' => _t('显示侧边栏Logo为圆形'),
     'showsearch' => _t('显示搜索框'),
+    'showcategory' => _t('显示文章分类'),
     'showposts' => _t('显示最新文章'),
     'showcomments' => _t('显示最新评论'),
     'showarchives' => _t('显示按月归档'),
     'showtags' => _t('显示常用标签'),
   ),
-  array('showposts', 'showcomments', 'showarchives', 'showtags', 'showlinks'), _t('侧边栏选项'));
+  array('borderradius', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags', 'showlinks'), _t('侧边栏选项'));
   $form->addInput($drawer->multiMode());
   $footer = new Typecho_Widget_Helper_Form_Element_Checkbox('footer', array(
-    'showrss' => _t('显示RSS'),
     'showscrolltop' => _t('显示返回顶部按钮'),
   ),
-  array('showrss', 'showscrolltop'), _t('页脚选项'));
+  array('showscrolltop'), _t('页脚选项'));
   $form->addInput($footer->multiMode());
 }

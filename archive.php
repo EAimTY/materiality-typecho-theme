@@ -12,7 +12,7 @@
   </div>
   <?php while($this->next()): ?>
     <div class="card-spacer"></div>
-    <div class="mdui-card">
+    <div class="mdui-card mdui-shadow-3 mdui-hoverable">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
         <div class="mdui-card-primary-subtitle"><?php $this->date('F j, Y'); ?></div>

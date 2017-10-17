@@ -1,6 +1,6 @@
 # Materiality
 
-### A Pretty, Powerful Typecho Material Design Theme
+### A Pretty, Powerful Typecho Material Design Theme Based on [MDUI](https://www.mdui.org/)
 
 ### Materiality
 `[məˌtɪrɪ'ælətɪ]`
@@ -10,15 +10,14 @@
 `n.物质性；实质性；实体性`
 
 ## Version
-1.0.5
+2.0
 
 ## Feature
 - 质感设计风格
-- 返回顶部浮动按钮
-- 自定义Drawer、Footer显示项目
+- 大量自定义选项
+- 显示各类联系方式、社交账号
 - 主题选项中可直接设置友情链接
-- Footer中显示邮箱、GitHub、Twitter、Facebook、微博、网易云音乐等账号
-- 文章列表支持显示”继续阅读“（在文章中需要的位置加入分割符`<!--more-->`）
+- 文章列表支持显示“继续阅读”（在文章中需要的位置加入分割符`<!--more-->`）
 
 ## Installation
 1. 下载主题并放置在`usr/themes/`下

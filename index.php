@@ -1,10 +1,10 @@
 <?php
 /**
- * A Pretty, Powerful Typecho Material Design Theme
+ * A Pretty, Powerful Typecho Material Design Theme Based on <a href="https://www.mdui.org/">MDUI</a>
  *
  * @package Materiality
  * @author EAimTY
- * @version 1.0.5
+ * @version 2.0
  * @link https://www.eaimty.com/
  */
 $this->need('header.php');
@@ -12,7 +12,7 @@ $this->need('header.php');
 <div class="mdui-container">
   <?php while($this->next()): ?>
     <div class="card-spacer"></div>
-    <div class="mdui-card">
+    <div class="mdui-card mdui-shadow-3 mdui-hoverable">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title mdui-text-color-pink-accent"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
         <div class="mdui-card-primary-subtitle"><?php $this->date('F j, Y'); ?></div>
