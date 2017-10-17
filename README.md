@@ -1,8 +1,8 @@
-# Materiality
+# materiality-typecho-theme
 
 ### A Pretty, Powerful Typecho Material Design Theme Based on [MDUI](https://www.mdui.org/)
 
-### Materiality
+### materiality
 `[məˌtɪrɪ'ælətɪ]`
 
 `The quality or character of being material or composed of matter.`
