@@ -27,6 +27,7 @@ function themeConfig($form) {
   array('showrss', 'showadmin'), _t('应用栏选项'));
   $form->addInput($appbar->multiMode());
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', array(
+    'hidedrawer' => _t('默认隐藏侧边栏'),
     'borderradius' => _t('显示侧边栏Logo为圆形'),
     'showsearch' => _t('显示搜索框'),
     'showcategory' => _t('显示文章分类'),
@@ -35,7 +36,7 @@ function themeConfig($form) {
     'showarchives' => _t('显示按月归档'),
     'showtags' => _t('显示常用标签'),
   ),
-  array('borderradius', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags', 'showlinks'), _t('侧边栏选项'));
+  array('hidedrawer', 'borderradius', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags', 'showlinks'), _t('侧边栏选项'));
   $form->addInput($drawer->multiMode());
   $footer = new Typecho_Widget_Helper_Form_Element_Checkbox('footer', array(
     'showscrolltop' => _t('显示返回顶部按钮'),

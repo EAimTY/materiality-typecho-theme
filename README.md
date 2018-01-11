@@ -10,7 +10,7 @@
 `n.物质性；实质性；实体性`
 
 ## Version
-2.0
+2.1
 
 ## Feature
 - 质感设计风格
@@ -28,7 +28,7 @@
 
 ![Demo](https://raw.githubusercontent.com/EAimTY/materiality-typecho-theme/master/screenshot.png)
 
-https://www.eaimty.com/
+[https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## License
 GPL v3

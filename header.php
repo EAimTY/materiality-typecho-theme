@@ -26,7 +26,7 @@
   <?php endif; ?>
   <?php $this->header(); ?>
 </head>
-<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink<?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
       <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
@@ -63,7 +63,7 @@
       <?php endif; ?>
     </div>
   </header>
-  <div class="mdui-drawer mdui-drawer-close" id="drawer">
+  <div class="mdui-drawer<?php if ($this->options->drawer && in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-close<?php endif; ?>" id="drawer">
     <div class="mdui-list" mdui-collapse="{accordion: true}">
       <div class="drawer-billboard drawer-item">
         <?php if ($this->options->avatar): ?>
