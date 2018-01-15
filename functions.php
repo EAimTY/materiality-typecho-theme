@@ -43,4 +43,11 @@ function themeConfig($form) {
   ),
   array('showscrolltop'), _t('页脚选项'));
   $form->addInput($footer->multiMode());
+  $footerlayout = new Typecho_Widget_Helper_Form_Element_Select('footerlayout',array(
+    'indrawer' => '显示于Drawer中',
+    'atbottom' => '显示于页面底部'
+  ),
+  'indrawer',
+  _t('Footer样式'));
+  $form->addInput($footerlayout->multiMode());
 }

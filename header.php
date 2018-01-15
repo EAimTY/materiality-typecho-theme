@@ -177,46 +177,48 @@
         </div>
       <?php endif; ?>
     </div>
-    <div class="drawer-spacer drawer-item"></div>
-    <div class="drawer-info drawer-item">
-      <div class="header-icons">
-        <?php if ($this->options->email): ?>
-          <a class="site-info" href="mailto:<?php $this->options->email(); ?>" target="_blank">
-            <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '邮箱'}"><i class="mdui-icon materiality-icons">&#xe90f;</i></button>
-          </a>
-        <?php endif; ?>
-        <?php if ($this->options->github): ?>
-          <a class="site-info" href="https://github.com/<?php $this->options->github(); ?>" target="_blank">
-            <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'GitHub'}"><i class="mdui-icon materiality-icons">&#xe910;</i></button>
-          </a>
-        <?php endif; ?>
-        <?php if ($this->options->twitter): ?>
-          <a class="site-info" href="https://twitter.com/<?php $this->options->twitter(); ?>" target="_blank">
-            <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Twitter'}"><i class="mdui-icon materiality-icons">&#xe911;</i></button>
-          </a>
-        <?php endif; ?>
-        <?php if ($this->options->facebook): ?>
-          <a class="site-info" href="https://www.facebook.com/<?php $this->options->facebook(); ?>" target="_blank">
-            <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Facebook'}"><i class="mdui-icon materiality-icons">&#xe912;</i></button>
-          </a>
-        <?php endif; ?>
-        <?php if ($this->options->weibo): ?>
-          <a class="site-info" href="<?php $this->options->weibo(); ?>" target="_blank">
-            <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '微博'}"><i class="mdui-icon materiality-icons">&#xe913;</i></button>
-          </a>
-        <?php endif; ?>
-        <?php if ($this->options->netease_music): ?>
-          <a class="site-info" href="<?php $this->options->netease_music(); ?>" target="_blank">
-            <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '网易云音乐'}"><i class="mdui-icon materiality-icons">&#xe914;</i></button>
-          </a>
-        <?php endif; ?>
+    <?php if(Typecho_Widget::widget('Widget_Options')->footerlayout && 'indrawer'==Typecho_Widget::widget('Widget_Options')->footerlayout): ?>
+      <div class="drawer-spacer drawer-item"></div>
+      <div class="drawer-info drawer-item">
+        <div class="header-icons">
+          <?php if ($this->options->email): ?>
+            <a class="site-info" href="mailto:<?php $this->options->email(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '邮箱'}"><i class="mdui-icon materiality-icons">&#xe90f;</i></button>
+            </a>
+          <?php endif; ?>
+          <?php if ($this->options->github): ?>
+            <a class="site-info" href="https://github.com/<?php $this->options->github(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'GitHub'}"><i class="mdui-icon materiality-icons">&#xe910;</i></button>
+            </a>
+          <?php endif; ?>
+          <?php if ($this->options->twitter): ?>
+            <a class="site-info" href="https://twitter.com/<?php $this->options->twitter(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Twitter'}"><i class="mdui-icon materiality-icons">&#xe911;</i></button>
+            </a>
+          <?php endif; ?>
+          <?php if ($this->options->facebook): ?>
+            <a class="site-info" href="https://www.facebook.com/<?php $this->options->facebook(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Facebook'}"><i class="mdui-icon materiality-icons">&#xe912;</i></button>
+            </a>
+          <?php endif; ?>
+          <?php if ($this->options->weibo): ?>
+            <a class="site-info" href="<?php $this->options->weibo(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '微博'}"><i class="mdui-icon materiality-icons">&#xe913;</i></button>
+            </a>
+          <?php endif; ?>
+          <?php if ($this->options->netease_music): ?>
+            <a class="site-info" href="<?php $this->options->netease_music(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '网易云音乐'}"><i class="mdui-icon materiality-icons">&#xe914;</i></button>
+            </a>
+          <?php endif; ?>
+        </div>
+        <div class="header-copyright">
+          <p class="site-info">Powered by <a class="site-info" href="http://typecho.org/" target="_blank">Typecho)))</a></p>
+          <p class="site-info">Optimized by <a class="site-info" href="https://www.eaimty.com/" target="_blank">EAimTY</a></p>
+          <?php if ($this->options->miibeian): ?>
+            <p class="site-info"><a class="site-info" href="http://www.miibeian.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></p>
+          <?php endif; ?>
+        </div>
       </div>
-      <div class="header-copyright">
-        <p class="site-info">Powered by <a class="site-info" href="http://typecho.org/" target="_blank">Typecho)))</a></p>
-        <p class="site-info">Optimized by <a class="site-info" href="https://www.eaimty.com/" target="_blank">EAimTY</a></p>
-        <?php if ($this->options->miibeian): ?>
-          <p class="site-info"><a class="site-info" href="http://www.miibeian.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></p>
-        <?php endif; ?>
-      </div>
-    </div>
+    <?php endif; ?>
   </div>
