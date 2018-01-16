@@ -11,7 +11,7 @@
   <meta http-equiv="content-type" content="text/html; charset=<?php $this->options->charset(); ?>" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="theme-color" content="#3f51b5" />
+  <meta name="theme-color" content="<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor;?>" />
   <meta name="renderer" content="webkit" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/mdui.min.css'); ?>" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/style.min.css'); ?>" />
@@ -26,7 +26,7 @@
   <?php endif; ?>
   <?php $this->header(); ?>
 </head>
-<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink<?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor;?> mdui-theme-accent-<?php echo Typecho_Widget::widget('Widget_Options')->accentcolor; ?><?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
       <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
@@ -177,7 +177,7 @@
         </div>
       <?php endif; ?>
     </div>
-    <?php if(Typecho_Widget::widget('Widget_Options')->footerlayout && 'indrawer'==Typecho_Widget::widget('Widget_Options')->footerlayout): ?>
+    <?php if('indrawer'==Typecho_Widget::widget('Widget_Options')->footerlayout): ?>
       <div class="drawer-spacer drawer-item"></div>
       <div class="drawer-info drawer-item">
         <div class="header-icons">

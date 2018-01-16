@@ -29,7 +29,7 @@
 <div class="mdui-container">
   <div id="comments">
     <?php $this->comments()->to($comments); ?>
-    <div class="mdui-chip">
+    <div class="mdui-chip mdui-typo">
       <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe904;</i></span>
       <span class="mdui-chip-title"><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></span>
     </div>
@@ -43,7 +43,7 @@
           <div class="mdui-card-header"><h2>添加新评论</h2></div>
           <div class="mdui-card-content">
             <?php if($this->user->hasLogin()): ?>
-              <div class="mdui-chip">
+              <div class="mdui-chip mdui-typo">
                 <span class="mdui-chip-title">登录身份: <a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>&nbsp;&nbsp;<a href="<?php $this->options->logoutUrl(); ?>" title="Logout">退出</a></span>
               </div>
             <?php else: ?>
@@ -60,20 +60,20 @@
                 <input name="url" class="mdui-textfield-input" type="url" value="<?php $this->remember('url'); ?>" />
               </div>
             <?php endif; ?>
-            <?php $comments->cancelReply('<div class="mdui-chip"><span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90b;</i></span><span class="mdui-chip-title">取消回复</span></div>'); ?>
+            <?php $comments->cancelReply('<div class="mdui-chip mdui-typo"><span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90b;</i></span><span class="mdui-chip-title">取消回复</span></div>'); ?>
             <div class="mdui-textfield mdui-textfield-floating-label">
               <label class="mdui-textfield-label">内容</label>
               <textarea name="text" class="mdui-textfield-input" type="text" rows="8"><?php $this->remember('text'); ?></textarea>
             </div>
           </div>
           <div class="mdui-card-actions">
-            <button class="mdui-btn mdui-ripple mdui-text-color-pink-accent" type="submit">发表评论</button>
+            <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent" type="submit">发表评论</button>
           </div>
         </form>
       </div>
       <div class="card-spacer"></div>
     <?php else: ?>
-      <div class="mdui-chip">
+      <div class="mdui-chip mdui-typo">
         <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90a;</i></span>
         <span class="mdui-chip-title">评论已关闭</span>
       </div>

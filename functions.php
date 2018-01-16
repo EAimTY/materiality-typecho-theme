@@ -50,4 +50,58 @@ function themeConfig($form) {
   'indrawer',
   _t('Footer样式'));
   $form->addInput($footerlayout->multiMode());
+  $primarycolor = new Typecho_Widget_Helper_Form_Element_Select('primarycolor',array(
+    'indigo' => 'Indigo',
+    'red' => 'Red',
+    'pink' => 'Pink',
+    'purple' => 'Purple',
+    'deep-purple' => 'Deep Purple',
+    'blue' => 'Blue',
+    'light-blue' => 'Light Blue',
+    'cyan' => 'Cyan',
+    'teal' => 'Teal',
+    'green' => 'Green',
+    'light-green' => 'Light Green',
+    'lime' => 'Lime',
+    'yellow' => 'Yellow',
+    'amber' => 'Amber',
+    'orange' => 'Orange',
+    'deep-orange' => 'Deep Orange',
+    'brown' => 'Brown',
+    'grey' => 'Grey',
+    'blue-grey' => 'Blue Grey',
+    'black' => 'Black',
+    'white' => 'White'
+  ),
+  'indigo',
+  _t('主题主色调'),
+  _t('选择主题主色调'));
+  $form->addInput($primarycolor->multiMode());
+  $accentcolor = new Typecho_Widget_Helper_Form_Element_Select('accentcolor',array(
+    'pink' => 'Pink',
+    'red' => 'Red',
+    'purple' => 'Purple',
+    'deep-purple' => 'Deep Purple',
+    'indigo' => 'Indigo',
+    'blue' => 'Blue',
+    'light-blue' => 'Light Blue',
+    'cyan' => 'Cyan',
+    'teal' => 'Teal',
+    'green' => 'Green',
+    'light-green' => 'Light Green',
+    'lime' => 'Lime',
+    'yellow' => 'Yellow',
+    'amber' => 'Amber',
+    'orange' => 'Orange',
+    'deep-orange' => 'Deep Orange',
+    'brown' => 'Brown',
+    'grey' => 'Grey',
+    'blue-grey' => 'Blue Grey',
+    'black' => 'Black',
+    'white' => 'White'
+  ),
+  'pink',
+  _t('主题强调色'),
+  _t('选择主题强调色'));
+  $form->addInput($accentcolor->multiMode());
 }

@@ -3,10 +3,10 @@
   <div class="card-spacer"></div>
   <div class="mdui-card mdui-shadow-3">
     <div class="mdui-card-primary">
-      <div class="mdui-card-primary-title"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
+      <div class="mdui-card-primary-title mdui-text-color-theme-accent"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
       <div class="mdui-card-primary-subtitle"><?php $this->date('F j, Y'); ?></div>
     </div>
-    <div class="mdui-card-content"><?php $this->content(); ?></div>
+    <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
   </div>
   <div class="card-spacer"></div>
 </div>
