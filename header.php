@@ -11,7 +11,6 @@
   <meta http-equiv="content-type" content="text/html; charset=<?php $this->options->charset(); ?>" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="theme-color" content="<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor;?>" />
   <meta name="renderer" content="webkit" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/mdui.min.css'); ?>" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/style.min.css'); ?>" />
