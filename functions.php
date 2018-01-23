@@ -69,9 +69,7 @@ function themeConfig($form) {
     'deep-orange' => 'Deep Orange',
     'brown' => 'Brown',
     'grey' => 'Grey',
-    'blue-grey' => 'Blue Grey',
-    'black' => 'Black',
-    'white' => 'White'
+    'blue-grey' => 'Blue Grey'
   ),
   'indigo',
   _t('主题主色调'),
@@ -93,12 +91,7 @@ function themeConfig($form) {
     'yellow' => 'Yellow',
     'amber' => 'Amber',
     'orange' => 'Orange',
-    'deep-orange' => 'Deep Orange',
-    'brown' => 'Brown',
-    'grey' => 'Grey',
-    'blue-grey' => 'Blue Grey',
-    'black' => 'Black',
-    'white' => 'White'
+    'deep-orange' => 'Deep Orange'
   ),
   'pink',
   _t('主题强调色'),

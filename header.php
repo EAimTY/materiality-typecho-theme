@@ -11,6 +11,30 @@
   <meta http-equiv="content-type" content="text/html; charset=<?php $this->options->charset(); ?>" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="theme-color" content="#<?php
+    $colorcode = array(
+      'indigo' => '3F51B5',
+      'red' => 'F44336',
+      'pink' => 'E91E63',
+      'purple' => '9C27B0',
+      'deep-purple' => '673AB7',
+      'blue' => '2196F3',
+      'light-blue' => '03A9F4',
+      'cyan' => '00BCD4',
+      'teal' => '009688',
+      'green' => '4CAF50',
+      'light-green' => '8BC34A',
+      'lime' => 'CDDC39',
+      'yellow' => 'FFEB3B',
+      'amber' => 'FFC107',
+      'orange' => 'FF9800',
+      'deep-orange' => 'FF5722',
+      'brown' => '795548',
+      'grey' => '9E9E9E',
+      'blue-grey' => '607D8B'
+    );
+    $themecolor = $colorcode[Typecho_Widget::widget('Widget_Options')->primarycolor];
+    echo $themecolor; ?>" />
   <meta name="renderer" content="webkit" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/mdui.min.css'); ?>" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/style.min.css'); ?>" />
@@ -25,7 +49,7 @@
   <?php endif; ?>
   <?php $this->header(); ?>
 </head>
-<body class="mdui-appbar-with-toolbar mdui-theme-primary-<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor;?> mdui-theme-accent-<?php echo Typecho_Widget::widget('Widget_Options')->accentcolor; ?><?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor; ?> mdui-theme-accent-<?php echo Typecho_Widget::widget('Widget_Options')->accentcolor; ?><?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
       <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
@@ -65,9 +89,7 @@
   <div class="mdui-drawer<?php if ($this->options->drawer && in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-close<?php endif; ?>" id="drawer">
     <div class="mdui-list" mdui-collapse="{accordion: true}">
       <div class="drawer-billboard drawer-item">
-        <?php if ($this->options->avatar): ?>
-          <a href="<?php $this->options->siteUrl(); ?>"><img class="drawer-logo <?php if ($this->options->drawer && in_array('borderradius', $this->options->drawer)): ?>border-radius<?php endif; ?>" src="<?php $this->options->avatar(); ?>" /></a>
-        <?php endif; ?>
+        <a href="<?php $this->options->siteUrl(); ?>"><img class="drawer-logo <?php if ($this->options->drawer && in_array('borderradius', $this->options->drawer)): ?>border-radius<?php endif; ?>" <?php if ($this->options->avatar): ?>src="<?php $this->options->avatar(); ?>"<?php endif; ?> /></a>
         <?php if ($this->options->description): ?>
           <div class="drawer-description"><?php $this->options->description(); ?></div>
         <?php endif; ?>
