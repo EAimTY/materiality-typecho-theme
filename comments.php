@@ -13,11 +13,11 @@
 <div id="<?php $comments->theId(); ?>" class="mdui-card mdui-shadow-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
   <div class="mdui-card-header">
     <div class="mdui-card-header-avatar"><?php $comments->gravatar('40', ''); ?></div>
-    <div class="mdui-card-header-title"><?php $comments->author(); ?></div>
+    <div class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
     <div class="mdui-card-header-subtitle"><?php $comments->date('Y-m-d H:i'); ?></div>
   </div>
   <div class="mdui-card-content"><?php $comments->content(); ?></div>
-  <?php $comments->reply('<div class="mdui-card-actions"><button class="mdui-btn mdui-ripple">回复</button></div>'); ?>
+  <?php $comments->reply('<div class="mdui-card-actions"><button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">回复</button></div>'); ?>
   <?php if ($comments->children) { ?>
     <div class="mdui-container">
       <?php $comments->threadedComments($options); ?>
