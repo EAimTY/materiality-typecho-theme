@@ -19,7 +19,7 @@
       </div>
       <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
       <div class="mdui-card-actions">
-        <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent"><a href="<?php $this->permalink(); ?>">继续阅读</a></button>
+        <a class="mdui-btn mdui-ripple mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>">继续阅读</a>
       </div>
     </div>
     <div class="card-spacer"></div>
