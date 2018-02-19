@@ -14,7 +14,7 @@ $this->need('header.php');
     <div class="card-spacer"></div>
     <div class="mdui-card mdui-shadow-3 mdui-hoverable">
       <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title mdui-text-color-theme-accent"><a href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
+        <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
         <div class="mdui-card-primary-subtitle"><?php $this->date('F j, Y'); ?></div>
       </div>
       <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
