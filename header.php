@@ -204,32 +204,32 @@
         <div class="header-icons">
           <?php if ($this->options->email): ?>
             <a class="site-info" href="mailto:<?php $this->options->email(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '邮箱'}"><i class="mdui-icon materiality-icons">&#xe90f;</i></button>
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '邮箱'}"><i class="mdui-icon materiality-icons header-icon">&#xe90f;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->github): ?>
             <a class="site-info" href="https://github.com/<?php $this->options->github(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'GitHub'}"><i class="mdui-icon materiality-icons">&#xe910;</i></button>
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'GitHub'}"><i class="mdui-icon materiality-icons header-icon">&#xe910;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->twitter): ?>
             <a class="site-info" href="https://twitter.com/<?php $this->options->twitter(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Twitter'}"><i class="mdui-icon materiality-icons">&#xe911;</i></button>
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Twitter'}"><i class="mdui-icon materiality-icons header-icon">&#xe911;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->facebook): ?>
             <a class="site-info" href="https://www.facebook.com/<?php $this->options->facebook(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Facebook'}"><i class="mdui-icon materiality-icons">&#xe912;</i></button>
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Facebook'}"><i class="mdui-icon materiality-icons header-icon">&#xe912;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->weibo): ?>
             <a class="site-info" href="<?php $this->options->weibo(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '微博'}"><i class="mdui-icon materiality-icons">&#xe913;</i></button>
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '微博'}"><i class="mdui-icon materiality-icons header-icon">&#xe913;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->netease_music): ?>
             <a class="site-info" href="<?php $this->options->netease_music(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '网易云音乐'}"><i class="mdui-icon materiality-icons">&#xe914;</i></button>
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '网易云音乐'}"><i class="mdui-icon materiality-icons header-icon">&#xe914;</i></button>
             </a>
           <?php endif; ?>
         </div>
