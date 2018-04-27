@@ -40,6 +40,7 @@
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/style.min.css'); ?>" />
   <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php $this->options->themeUrl('js/mdui.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php $this->options->themeUrl('js/tmode.min.js'); ?>"></script>
   <?php if ($this->options->footer && in_array('showscrolltop', $this->options->footer)): ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/scrolltop.min.js'); ?>"></script>
   <?php endif; ?>
@@ -49,14 +50,17 @@
   <?php endif; ?>
   <?php $this->header(); ?>
 </head>
-<body class="mdui-appbar-with-toolbar mdui-theme-primary-<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor; ?> mdui-theme-accent-<?php echo Typecho_Widget::widget('Widget_Options')->accentcolor; ?><?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
+<body id="body" class="mdui-appbar-with-toolbar mdui-theme-primary-<?php echo Typecho_Widget::widget('Widget_Options')->primarycolor; ?> mdui-theme-accent-<?php echo Typecho_Widget::widget('Widget_Options')->accentcolor; ?><?php if ($this->options->drawer && !in_array('hidedrawer', $this->options->drawer)): ?> mdui-drawer-body-left<?php endif; ?>">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
       <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
       <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
       <div class="mdui-toolbar-spacer"></div>
+      <?php if ($this->options->appbar && in_array('thememode', $this->options->appbar)): ?>
+        <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" onclick="tmode()"><i class="mdui-icon materiality-icons" id="tmode-btn">&#xe901;</i></span>
+      <?php endif; ?>
       <?php if ($this->options->appbar && in_array('showrss', $this->options->appbar)): ?>
-        <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe90e;</i></span>
+        <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe903;</i></span>
         <ul class="mdui-menu" id="rss">
           <li class="mdui-menu-item">
             <a href="<?php $this->options->feedUrl(); ?>" class="mdui-ripple footer-menu-item">文章RSS</a>
@@ -67,7 +71,7 @@
         </ul>
       <?php endif; ?>
       <?php if ($this->options->appbar && in_array('showadmin', $this->options->appbar)): ?>
-        <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '管理后台'}" mdui-menu="{target: '#admin-menu'}"><i class="mdui-icon materiality-icons">&#xe916;</i></span>
+        <span class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '管理后台'}" mdui-menu="{target: '#admin-menu'}"><i class="mdui-icon materiality-icons">&#xe904;</i></span>
         <ul class="mdui-menu" id="admin-menu">
           <?php if($this->user->hasLogin()): ?>
             <li class="mdui-menu-item">
@@ -105,7 +109,7 @@
         <div class="mdui-collapse-item drawer-item">
           <a href="<?php $pages->permalink(); ?>">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe902;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe905;</i>
               <div class="mdui-list-item-content"><?php $pages->title(); ?></div>
             </div>
           </a>
@@ -115,9 +119,9 @@
       <?php if ($this->options->drawer && in_array('showcategory', $this->options->drawer)): ?>
         <div class="mdui-collapse-item drawer-item">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe901;</i>
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe906;</i>
             <div class="mdui-list-item-content">文章分类</div>
-            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
+            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
             <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
@@ -130,9 +134,9 @@
       <?php if ($this->options->drawer && in_array('showposts', $this->options->drawer)): ?>
         <div class="mdui-collapse-item drawer-item">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe903;</i>
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe907;</i>
             <div class="mdui-list-item-content">最新文章</div>
-            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
+            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
             <?php $this->widget('Widget_Contents_Post_Recent')->parse('<a href="{permalink}" class="mdui-list-item mdui-ripple">{title}</a>'); ?>
@@ -142,9 +146,9 @@
       <?php if ($this->options->drawer && in_array('showcomments', $this->options->drawer)): ?>
         <div class="mdui-collapse-item drawer-item">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe904;</i>
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe908;</i>
             <div class="mdui-list-item-content">最新评论</div>
-            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
+            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
             <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -157,9 +161,9 @@
       <?php if ($this->options->drawer && in_array('showarchives', $this->options->drawer)): ?>
         <div class="mdui-collapse-item drawer-item">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe905;</i>
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe909;</i>
             <div class="mdui-list-item-content">按月归档</div>
-            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
+            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
             <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=F Y')->parse('<a href="{permalink}" class="mdui-list-item mdui-ripple">{date}</a>'); ?>
@@ -169,9 +173,9 @@
       <?php if ($this->options->drawer && in_array('showtags', $this->options->drawer)): ?>
         <div class="mdui-collapse-item drawer-item">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe906;</i>
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90a;</i>
             <div class="mdui-list-item-content">常用标签</div>
-            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
+            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
             <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=5')->to($tags); ?>
@@ -188,9 +192,9 @@
       <?php if ($this->options->links): ?>
         <div class="mdui-collapse-item drawer-item">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe907;</i>
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90b;</i>
             <div class="mdui-list-item-content">友情链接</div>
-            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe908;</i>
+            <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
             <?php $this->options->links(); ?>
@@ -200,44 +204,44 @@
     </div>
     <?php if('indrawer'==Typecho_Widget::widget('Widget_Options')->footerlayout): ?>
       <div class="drawer-spacer drawer-item"></div>
-      <div class="drawer-info drawer-item">
+      <div class="drawer-info drawer-item lightmode-info">
         <div class="header-icons">
           <?php if ($this->options->email): ?>
-            <a class="site-info" href="mailto:<?php $this->options->email(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '邮箱'}"><i class="mdui-icon materiality-icons header-icon">&#xe90f;</i></button>
+            <a href="mailto:<?php $this->options->email(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '邮箱'}"><i class="mdui-icon materiality-icons">&#xe912;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->github): ?>
-            <a class="site-info" href="https://github.com/<?php $this->options->github(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'GitHub'}"><i class="mdui-icon materiality-icons header-icon">&#xe910;</i></button>
+            <a href="https://github.com/<?php $this->options->github(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'GitHub'}"><i class="mdui-icon materiality-icons">&#xe913;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->twitter): ?>
-            <a class="site-info" href="https://twitter.com/<?php $this->options->twitter(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Twitter'}"><i class="mdui-icon materiality-icons header-icon">&#xe911;</i></button>
+            <a href="https://twitter.com/<?php $this->options->twitter(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Twitter'}"><i class="mdui-icon materiality-icons">&#xe914;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->facebook): ?>
-            <a class="site-info" href="https://www.facebook.com/<?php $this->options->facebook(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Facebook'}"><i class="mdui-icon materiality-icons header-icon">&#xe912;</i></button>
+            <a href="https://www.facebook.com/<?php $this->options->facebook(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: 'Facebook'}"><i class="mdui-icon materiality-icons">&#xe915;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->weibo): ?>
-            <a class="site-info" href="<?php $this->options->weibo(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '微博'}"><i class="mdui-icon materiality-icons header-icon">&#xe913;</i></button>
+            <a href="<?php $this->options->weibo(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '微博'}"><i class="mdui-icon materiality-icons">&#xe916;</i></button>
             </a>
           <?php endif; ?>
           <?php if ($this->options->netease_music): ?>
-            <a class="site-info" href="<?php $this->options->netease_music(); ?>" target="_blank">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '网易云音乐'}"><i class="mdui-icon materiality-icons header-icon">&#xe914;</i></button>
+            <a href="<?php $this->options->netease_music(); ?>" target="_blank">
+              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-tooltip="{content: '网易云音乐'}"><i class="mdui-icon materiality-icons">&#xe917;</i></button>
             </a>
           <?php endif; ?>
         </div>
         <div class="header-copyright">
-          <p class="site-info">Powered by <a class="site-info" href="http://typecho.org/" target="_blank">Typecho)))</a></p>
-          <p class="site-info">Optimized by <a class="site-info" href="https://www.eaimty.com/" target="_blank">EAimTY</a></p>
+          <p>Powered by <a href="http://typecho.org/" target="_blank">Typecho)))</a></p>
+          <p>Optimized by <a href="https://www.eaimty.com/theme.html" target="_blank">EAimTY</a></p>
           <?php if ($this->options->miibeian): ?>
-            <p class="site-info"><a class="site-info" href="http://www.miibeian.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></p>
+            <p><a href="http://www.miibeian.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></p>
           <?php endif; ?>
         </div>
       </div>

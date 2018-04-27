@@ -2,9 +2,9 @@
 /**
  * A Pretty, Powerful Typecho Material Design Theme Based on <a href="https://www.mdui.org/">MDUI</a>
  *
- * @package Materiality
+ * @package materiality-typecho-theme
  * @author EAimTY
- * @version 2.4.4
+ * @version 2.5
  * @link https://www.eaimty.com/
  */
 $this->need('header.php');
@@ -25,8 +25,8 @@ $this->need('header.php');
     <div class="card-spacer"></div>
   <?php endwhile; ?>
   <div class="page-nav">
-    <div class="prev-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'上一页\'}"><i class="mdui-icon materiality-icons mdui-text-color-' . Typecho_Widget::widget('Widget_Options')->accentcolor . '-accent">&#xe90c;</i></button>'); ?></div>
-    <div class="next-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'下一页\'}"><i class="mdui-icon materiality-icons mdui-text-color-' . Typecho_Widget::widget('Widget_Options')->accentcolor . '-accent">&#xe90d;</i></button>', 'next'); ?></div>
+    <div class="prev-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'上一页\'}"><i class="mdui-icon materiality-icons mdui-text-color-' . Typecho_Widget::widget('Widget_Options')->accentcolor . '-accent">&#xe910;</i></button>'); ?></div>
+    <div class="next-page mdui-col-xs-6"><?php $this->pageLink('<button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: \'下一页\'}"><i class="mdui-icon materiality-icons mdui-text-color-' . Typecho_Widget::widget('Widget_Options')->accentcolor . '-accent">&#xe911;</i></button>', 'next'); ?></div>
   </div>
 </div>
 <?php $this->need('footer.php'); ?>

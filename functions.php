@@ -21,10 +21,11 @@ function themeConfig($form) {
   $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接代码'), _t('按照 <i>&lt;a href="友情链接URL" class="mdui-list-item mdui-ripple drawer-list-item" target="_blank"&gt;友情链接名称&lt;/a&gt;</i> 的格式输入友情链接，一条一行'));
   $form->addInput($links);
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(
+    'thememode' => _t('显示暗色模式切换按钮'),
     'showrss' => _t('显示RSS'),
     'showadmin' => _t('显示管理后台按钮'),
   ),
-  array('showrss', 'showadmin'), _t('应用栏选项'));
+  array('thememode', 'showrss', 'showadmin'), _t('应用栏选项'));
   $form->addInput($appbar->multiMode());
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', array(
     'hidedrawer' => _t('默认隐藏侧边栏'),
