@@ -4,7 +4,7 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 2.5
+ * @version 2.5.1
  * @link https://www.eaimty.com/
  */
 $this->need('header.php');

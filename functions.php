@@ -22,7 +22,7 @@ function themeConfig($form) {
   $form->addInput($links);
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(
     'thememode' => _t('显示暗色模式切换按钮'),
-    'showrss' => _t('显示RSS'),
+    'showrss' => _t('显示RSS按钮'),
     'showadmin' => _t('显示管理后台按钮'),
   ),
   array('thememode', 'showrss', 'showadmin'), _t('应用栏选项'));

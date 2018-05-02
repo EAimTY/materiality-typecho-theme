@@ -11,7 +11,7 @@
   <meta http-equiv="content-type" content="text/html; charset=<?php $this->options->charset(); ?>" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="theme-color" content="#<?php
+  <meta id="theme-color" name="theme-color" content="#<?php
     $colorcode = array(
       'indigo' => '3F51B5',
       'red' => 'F44336',
@@ -40,7 +40,9 @@
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/style.min.css'); ?>" />
   <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php $this->options->themeUrl('js/mdui.min.js'); ?>"></script>
-  <script type="text/javascript" src="<?php $this->options->themeUrl('js/tmode.min.js'); ?>"></script>
+  <?php if ($this->options->appbar && in_array('thememode', $this->options->appbar)): ?>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('js/tmode.min.js'); ?>"></script>
+  <?php endif; ?>
   <?php if ($this->options->footer && in_array('showscrolltop', $this->options->footer)): ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/scrolltop.min.js'); ?>"></script>
   <?php endif; ?>
