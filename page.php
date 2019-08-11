@@ -6,8 +6,7 @@
       <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
       <div class="mdui-card-primary-subtitle"><?php $this->date('F j, Y'); ?></div>
     </div>
-    <div class="mdui-card-content mdui-typo"><?php $c=mb_substr($this->content, 0, 500, 'utf-8');echo $c.'...';
-?></div>
+    <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
   </div>
   <div class="card-spacer"></div>
 </div>
