@@ -243,7 +243,7 @@
           <p>Powered by <a href="http://typecho.org/" target="_blank">Typecho)))</a></p>
           <p>Optimized by <a href="https://www.eaimty.com/theme.html" target="_blank">EAimTY</a></p>
           <?php if ($this->options->miibeian): ?>
-            <p><a href="http://www.miibeian.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></p>
+            <p><a href="http://www.beian.miit.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></p>
           <?php endif; ?>
         </div>
       </div>
