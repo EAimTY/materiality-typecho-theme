@@ -28,7 +28,7 @@
       <div>Powered by <a class="footer-info" href="http://typecho.org/" target="_blank">Typecho)))</a></div>
       <div>Optimized by <a class="footer-info" href="https://www.eaimty.com/theme.html" target="_blank">EAimTY</a></div>
       <?php if ($this->options->miibeian): ?>
-        <div><a class="footer-info" href="http://www.miibeian.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></div>
+        <div><a class="footer-info" href="http://www.beian.miit.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></div>
       <?php endif; ?>
     </div>
   </footer>
