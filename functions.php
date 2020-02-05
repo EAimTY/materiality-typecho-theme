@@ -1,25 +1,33 @@
 <?php
-function getRandomPosts($random=5){
+
+// 获取随机文章
+function getRandomPosts($random = 5) {
   $db = Typecho_Db::get();
   $adapterName = $db->getAdapterName();
-  if ($adapterName == 'pgsql' || $adapterName == 'Pdo_Pgsql' || $adapterName == 'Pdo_SQLite' || $adapterName == 'SQLite'){
-    $order_by = 'RANDOM()';
-  } else{
-    $order_by = 'RAND()';
-  }
-  $sql = $db->select()->from('table.contents')->where('status = ?','publish')->where('table.contents.created <= ?', time())->where('type = ?', 'post')->limit($random)->order($order_by);
+  if ($adapterName == 'pgsql' || $adapterName == 'Pdo_Pgsql' || $adapterName == 'Pdo_SQLite' || $adapterName == 'SQLite') $order_by = 'RANDOM()';
+  else $order_by = 'RAND()';
+  $sql = $db->select()->from('table.contents')->where('status = ?', 'publish')->where('table.contents.created <= ?', time())->where('type = ?', 'post')->limit($random)->order($order_by);
   $result = $db->fetchAll($sql);
-  if ($result){
-    foreach ($result as $val){
-      $obj = Typecho_Widget::widget('Widget_Abstract_Contents');
-      $val = $obj->push($val);
-      $post_title = htmlspecialchars($val['title']);
-      $permalink = $val['permalink'];
-      echo '<a class="mdui-typo-body-1 mdui-m-y-1" href="'.$permalink.'">'.$post_title.'</a><br />';
-    }
+  if ($result) foreach ($result as $val){
+    $obj = Typecho_Widget::widget('Widget_Abstract_Contents');
+    $val = $obj->push($val);
+    $post_title = htmlspecialchars($val['title']);
+    $permalink = $val['permalink'];
+    echo '<a class="mdui-typo-body-1 mdui-m-y-1" href="' . $permalink . '">' . $post_title . '</a><br />';
   }
 }
 
+// 解析友情链接数据
+function getLinks($obj) {
+  $links_arr = explode("\n", trim(str_replace("\n\n", "\n", $obj)));
+  foreach ($links_arr as $link) {
+    $link = explode(",", $link);
+    foreach ($link as $seq => $val) $link[$seq] = substr(trim($val), 1, -1);
+    echo '<a class="mdui-list-item mdui-ripple" target="_blank" rel="external friend noopener" href="' . $link[2] . (($link[1]) ? '" mdui-tooltip="{content: \'' . $link[1] . '\'}">' : '">') . $link[0] . '</a>';
+  }
+}
+
+// 设置外观
 function themeConfig($form) {
   $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像及站点LOGO'), _t('输入侧边栏头像及站点LOGO图片链接，不显示则留空'));
   $form->addInput($avatar);
@@ -37,7 +45,7 @@ function themeConfig($form) {
   $form->addInput($netease_music);
   $miibeian = new Typecho_Widget_Helper_Form_Element_Text('miibeian', NULL, NULL, _t('备案号'), _t('输入备案号，不显示则留空'));
   $form->addInput($miibeian);
-  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接代码'), _t('按照 <i>&lt;a href="友情链接URL" class="mdui-list-item mdui-ripple drawer-list-item" target="_blank"&gt;友情链接名称&lt;/a&gt;</i> 的格式输入友情链接，一条一行'));
+  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述（若其中有单引号，则需要用反斜杠将其转义为“\\\'”）", "友情链接URL"</i> 的格式输入友情链接，一条一行，例如：<br /><i>"EAimTY的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
   $form->addInput($links);
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(
@@ -57,7 +65,7 @@ function themeConfig($form) {
     'showarchives' => _t('显示按月归档'),
     'showtags' => _t('显示常用标签'),
   ),
-  array('hidedrawer', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags', 'showlinks'), _t('侧边栏选项'));
+  array('hidedrawer', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags'), _t('侧边栏选项'));
   $form->addInput($drawer->multiMode());
 
   $primarycolor = new Typecho_Widget_Helper_Form_Element_Select('primarycolor',array(

@@ -218,7 +218,7 @@
               <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
-              <?php $this->options->links(); ?>
+              <?php getLinks($this->options->links); ?>
             </div>
           </div>
         <?php endif; ?>
