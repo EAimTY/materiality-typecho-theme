@@ -24,9 +24,13 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.0
+3.0.1
 
 ## 更新日志
+#### 3.0.1
+- 更换Gravatar头像源与默认头像
+- 优化页面加载逻辑
+- 修复有时会加载Roboto与Material Icon的bug
 #### 3.0
 - 重构主题，优化代码结构
 - 移除jQuery依赖，减小主题体积
