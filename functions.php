@@ -23,6 +23,8 @@ function getLinks($obj) {
   foreach ($links_arr as $link) {
     $link = explode(",", $link);
     foreach ($link as $seq => $val) $link[$seq] = substr(trim($val), 1, -1);
+    $link[1] = str_replace("'", "\\'", $link[1]);
+    $link[1] = str_replace("\"", "&quot;", $link[1]);
     echo '<a class="mdui-list-item mdui-ripple" target="_blank" rel="external friend noopener" href="' . $link[2] . (($link[1]) ? '" mdui-tooltip="{content: \'' . $link[1] . '\'}">' : '">') . $link[0] . '</a>';
   }
 }
@@ -45,7 +47,7 @@ function themeConfig($form) {
   $form->addInput($netease_music);
   $miibeian = new Typecho_Widget_Helper_Form_Element_Text('miibeian', NULL, NULL, _t('备案号'), _t('输入备案号，不显示则留空'));
   $form->addInput($miibeian);
-  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述（若其中有单引号，则需要用反斜杠将其转义为“\\\'”）", "友情链接URL"</i> 的格式输入友情链接，一条一行，例如：<br /><i>"EAimTY的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
+  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述", "友情链接URL"</i> 的格式输入友情链接，一条一行，例如：<br /><i>"EAimTY的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
   $form->addInput($links);
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(

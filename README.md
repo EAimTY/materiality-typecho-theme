@@ -24,9 +24,12 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.0.2
+3.0.2.1
 
 ## 更新日志
+#### 3.0.2.1
+- 更换Gravatar头像源
+- 现已无需转义友情链接设置中的引号
 #### 3.0.2
 - 优化了友情链接设置（更新主题需重新设置友情链接）
 #### 3.0.1

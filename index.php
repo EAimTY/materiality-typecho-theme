@@ -5,7 +5,7 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 3.0.2
+ * @version 3.0.2.1
  * @link https://www.eaimty.com/
  */
 
