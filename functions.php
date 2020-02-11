@@ -51,11 +51,12 @@ function themeConfig($form) {
   $form->addInput($links);
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(
-    'darkmode' => _t('显示暗色模式切换按钮'),
+    'toggledark' => _t('显示暗色模式切换按钮'),
+    'autodark' => _t('自动切换暗色模式（20:00~6:00）'),
     'showrss' => _t('显示RSS按钮'),
     'showadmin' => _t('显示管理后台按钮'),
   ),
-  array('darkmode', 'showrss', 'showadmin'), _t('应用栏选项'));
+  array('toggledark', 'autodark', 'showrss', 'showadmin'), _t('应用栏选项'));
   $form->addInput($appbar->multiMode());
 
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', array(

@@ -33,15 +33,19 @@
     $themecolor = $colorcode[Typecho_Widget::widget('Widget_Options')->primarycolor];
     echo $themecolor; ?>" />
 
-    <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('resources/mdui.min.css'); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('resources/materiality.min.css'); ?>" />
-    <script type="text/javascript" src="<?php $this->options->themeUrl('resources/mdui.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('resources/smoothscrolltop.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('resources/smoothscroll.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('resources/lazysizes.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('resources/materiality.min.js'); ?>"></script>
-    <?php if ($this->options->appbar && in_array('darkmode', $this->options->appbar)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('resources/darkmode.min.js'); ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscrolltop.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>"></script>
+    <?php if ($this->options->appbar && (in_array('toggledark', $this->options->appbar) || in_array('autodark', $this->options->appbar))): ?>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jscookie.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>"></script>
+    <?php endif; ?>
+    <?php if ($this->options->appbar && in_array('autodark', $this->options->appbar)): ?>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/autodark.min.js'); ?>"></script>
     <?php endif; ?>
     <?php if ($this->options->avatar): ?>
       <link rel="Shortcut Icon" href="<?php $this->options->avatar(); ?>" />
@@ -61,8 +65,8 @@
         <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
         <div class="mdui-toolbar-spacer"></div>
 
-        <!-- 暗色模式切换 -->
-        <?php if ($this->options->appbar && in_array('darkmode', $this->options->appbar)): ?>
+        <!-- 暗色模式切换按钮 -->
+        <?php if ($this->options->appbar && in_array('toggledark', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="toggletheme()"><i class="mdui-icon materiality-icons" id="theme-btn">&#xe901;</i></span>
         <?php endif; ?>
 

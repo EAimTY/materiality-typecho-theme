@@ -24,9 +24,13 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.0.2.1
+3.1
 
 ## 更新日志
+#### 3.1
+- 重写了夜间模式
+- 增加了是否开启夜间模式自动切换的选项
+- 优化了目录结构
 #### 3.0.2.1
 - 更换Gravatar头像源
 - 现已无需转义友情链接设置中的引号
