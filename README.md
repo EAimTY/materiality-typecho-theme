@@ -3,11 +3,11 @@
 ### 一款简洁并专注于显示文字内容的 Material Design 风格 Typecho 主题，基于 [MDUI](https://www.mdui.org/)
 
 ## 特点
-- Material Design 风格
-- 样式简洁，优化文字显示
+- 遵循 Material Design
+- 样式简洁，专注于显示文字内容
 - 图片懒加载
 - 可自由切换主题颜色
-- 可根据时间(20:00~6:00)自动或手动切换夜间模式
+- 可手动或根据时间(20:00~7:00)自动切换夜间模式
 - 可自定义Header、Drawer、Footer中显示的内容
 - 主题选项中可直接设置友情链接
 - 列表中支持截断文章并显示“继续阅读”（在文章中需要的位置加入分割符`<!--more-->`）
@@ -24,9 +24,12 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.1
+3.1.1
 
 ## 更新日志
+#### 3.1.1
+- 修复post和page页时间格式不遵从设置的bug
+- 优化文案、变量名与Cookie名
 #### 3.1
 - 重写了夜间模式
 - 增加了是否开启夜间模式自动切换的选项

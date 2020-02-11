@@ -67,7 +67,7 @@
 
         <!-- 暗色模式切换按钮 -->
         <?php if ($this->options->appbar && in_array('toggledark', $this->options->appbar)): ?>
-          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="toggletheme()"><i class="mdui-icon materiality-icons" id="theme-btn">&#xe901;</i></span>
+          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="toggledark()"><i class="mdui-icon materiality-icons" id="theme-btn">&#xe901;</i></span>
         <?php endif; ?>
 
         <!-- RSS 按钮 -->

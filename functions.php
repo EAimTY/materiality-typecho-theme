@@ -19,7 +19,7 @@ function getRandomPosts($random = 5) {
 
 // 解析友情链接数据
 function getLinks($obj) {
-  $links_arr = explode("\n", trim(str_replace("\n\n", "\n", $obj)));
+  $links_arr = explode("\n", trim($obj));
   foreach ($links_arr as $link) {
     $link = explode(",", $link);
     foreach ($link as $seq => $val) $link[$seq] = substr(trim($val), 1, -1);
@@ -52,7 +52,7 @@ function themeConfig($form) {
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', array(
     'toggledark' => _t('显示暗色模式切换按钮'),
-    'autodark' => _t('自动切换暗色模式（20:00~6:00）'),
+    'autodark' => _t('自动切换暗色模式（20:00~7:00）'),
     'showrss' => _t('显示RSS按钮'),
     'showadmin' => _t('显示管理后台按钮'),
   ),
