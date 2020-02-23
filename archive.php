@@ -17,7 +17,15 @@
     <div class="mdui-card mdui-shadow-3 mdui-hoverable mdui-m-y-3">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
-        <div class="mdui-card-primary-subtitle"><?php $this->date(); ?></div>
+        <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
+          <?php $this->date(); ?>
+          <?php if ($this->options->articleinfo && in_array('showauthor', $this->options->articleinfo)): ?>
+            <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+          <?php endif; ?>
+          <?php if ($this->category && $this->options->articleinfo && in_array('showcategory', $this->options->articleinfo)): ?>
+            <span> | </span><i class="mdui-icon materiality-icons">&#xe906;</i><?php $this->category(', '); ?>
+          <?php endif; ?>
+        </div>
       </div>
       <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
       <div class="mdui-card-actions">

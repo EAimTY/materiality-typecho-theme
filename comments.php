@@ -40,8 +40,8 @@
         <div class="mdui-card-header"><h2>添加新评论</h2></div>
         <div class="mdui-card-content">
           <?php if($this->user->hasLogin()): ?>
-            <div class="mdui-chip mdui-typo">
-              <span class="mdui-chip-title">登录身份: <a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>&nbsp;&nbsp;<a href="<?php $this->options->logoutUrl(); ?>" title="Logout">退出</a></span>
+            <div class="mdui-chip">
+              <span class="mdui-chip-title">登录身份: <a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>&nbsp;&nbsp;<a href="<?php $this->options->logoutUrl(); ?>" class="mdui-text-color-theme-accent">退出</a></span>
             </div>
           <?php else: ?>
             <div class="mdui-textfield mdui-textfield-floating-label">
@@ -72,6 +72,13 @@
         </div>
       </form>
     </div>
-  <?php endif; ?>
+
+    <!-- 评论已关闭 -->
+    <?php elseif (!$this->allow('comment') && $this->options->articleinfo && in_array('commentdisabed', $this->options->articleinfo)): ?>
+      <div class="mdui-chip mdui-m-b-2">
+        <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90e;</i></span>
+        <span class="mdui-chip-title">评论已关闭</span>
+      </div>
+    <?php endif; ?>
 
 </div>

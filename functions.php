@@ -54,7 +54,7 @@ function themeConfig($form) {
     'toggledark' => _t('显示暗色模式切换按钮'),
     'autodark' => _t('自动切换暗色模式（20:00~7:00）'),
     'showrss' => _t('显示RSS按钮'),
-    'showadmin' => _t('显示管理后台按钮'),
+    'showadmin' => _t('显示管理后台按钮')
   ),
   array('toggledark', 'autodark', 'showrss', 'showadmin'), _t('应用栏选项'));
   $form->addInput($appbar->multiMode());
@@ -66,10 +66,18 @@ function themeConfig($form) {
     'showposts' => _t('显示最新文章'),
     'showcomments' => _t('显示最新评论'),
     'showarchives' => _t('显示按月归档'),
-    'showtags' => _t('显示常用标签'),
+    'showtags' => _t('显示常用标签')
   ),
   array('hidedrawer', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags'), _t('侧边栏选项'));
   $form->addInput($drawer->multiMode());
+
+  $articleinfo = new Typecho_Widget_Helper_Form_Element_Checkbox('articleinfo', array(
+    'showauthor' => _t('显示作者'),
+    'showcategory' => _t('显示分类'),
+    'commentdisabed' => _t('显示“评论已关闭”')
+  ),
+  array('showauthor', 'showcategory', 'commentdisabed'), _t('文章信息选项'));
+  $form->addInput($articleinfo->multiMode());
 
   $primarycolor = new Typecho_Widget_Helper_Form_Element_Select('primarycolor',array(
     'indigo' => 'Indigo',
