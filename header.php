@@ -36,10 +36,11 @@
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscrolltop.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscrolltop.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
     <?php if ($this->options->appbar && (in_array('toggledark', $this->options->appbar) || in_array('autodark', $this->options->appbar))): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jscookie.min.js'); ?>"></script>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>"></script>
@@ -229,4 +230,7 @@
 
       </div>
     </div>
-    <div class="page-content">
+    <div class="load-indicator mdui-shadow-3 mdui-valign">
+      <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
+    </div>
+    <div class="page-content mdui-hidden">

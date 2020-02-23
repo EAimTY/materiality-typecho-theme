@@ -5,6 +5,7 @@
 ## 特点
 - 遵循 Material Design
 - 样式简洁，专注于显示文字内容
+- Pjax无刷新加载页面
 - 图片懒加载
 - 可自由切换主题颜色
 - 可手动或根据时间(20:00~7:00)自动切换夜间模式
@@ -24,9 +25,12 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.1.1
+3.2
 
 ## 更新日志
+#### 3.2
+- 引入Pjax
+- 精简夜间模式代码
 #### 3.1.1
 - 修复post和page页时间格式不遵从设置的bug
 - 优化文案、变量名与Cookie名
@@ -65,6 +69,7 @@ The GNU General Public License v3.0
 
 ## 本项目使用了
 - [MDUI](https://www.mdui.org/)
+- [Pjax](https://github.com/MoOx/pjax)
 - [lazysizes](https://github.com/aFarkas/lazysizes)
 - [smoothscroll-for-websites](https://github.com/gblazex/smoothscroll-for-websites)
 - [Smooth Scroll behavior polyfill](https://github.com/iamdustan/smoothscroll)
