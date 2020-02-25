@@ -25,9 +25,13 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.3
+3.3.1
 
 ## 更新日志
+#### 3.3.1
+- 修复了评论丢失的bug
+- 加入了评论html5表单验证
+- 关闭反垃圾保护和来源页检测以兼容Pjax评论
 #### 3.3
 - 加入了显示文章作者功能与其开关
 - 加入了显示文章分类功能与其开关

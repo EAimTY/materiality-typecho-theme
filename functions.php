@@ -1,4 +1,9 @@
 <?php
+function themeInit($archive) {
+  //关闭反垃圾保护和来源页检测以兼容Pjax评论
+  Helper::options()->commentsAntiSpam = false;
+  Helper::options()->commentsCheckReferer = false;
+}
 
 // 获取随机文章
 function getRandomPosts($random = 5) {

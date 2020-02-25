@@ -52,7 +52,7 @@
       <link rel="Shortcut Icon" href="<?php $this->options->avatar(); ?>" />
       <link rel="Bootmark" href="<?php $this->options->avatar(); ?>" />
     <?php endif; ?>
-    <?php $this->header(); ?>
+    <?php $this->header('commentReply=&antiSpam='); ?>
 
     <title><?php $this->archiveTitle(array('category' => _t('分类 %s 下的文章'), 'search' => _t('包含关键字 %s 的文章'), 'tag' => _t('标签 %s 下的文章'), 'author' => _t('%s 发布的文章')), '', ' - '); ?><?php $this->options->title(); ?></title>
   </head>

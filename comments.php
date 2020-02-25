@@ -28,6 +28,10 @@
 <?php } ?>
 
 <div id="comments">
+
+  <!-- 获取respondId -->
+  <div class="mdui-hidden" id="respondid"><?php $this->respondId(); ?></div>
+
   <?php $this->comments()->to($comments); ?>
   <?php if ($comments->have()): ?>
     <?php $comments->listComments(); ?>
@@ -47,24 +51,28 @@
             <div class="mdui-textfield mdui-textfield-floating-label">
               <i class="mdui-icon materiality-icons">&#xe90f;</i>
               <label class="mdui-textfield-label">称呼</label>
-              <input name="author" class="mdui-textfield-input" type="text" autocomplete="new-password" value="<?php $this->remember('author'); ?>" />
+              <input name="author" class="mdui-textfield-input" type="text" autocomplete="new-password" value="<?php $this->remember('author'); ?>" required />
+              <div class="mdui-textfield-error">请填写称呼</div>
             </div>
             <div class="mdui-textfield mdui-textfield-floating-label">
               <i class="mdui-icon materiality-icons">&#xe910;</i>
-              <label class="mdui-textfield-label">Email</label>
-              <input name="mail" class="mdui-textfield-input" type="email" autocomplete="new-password" value="<?php $this->remember('mail'); ?>" />
+              <label class="mdui-textfield-label">E-mail</label>
+              <input name="mail" class="mdui-textfield-input" type="email" autocomplete="new-password" value="<?php $this->remember('mail'); ?>" required />
+              <div class="mdui-textfield-error">请填写合法的E-mail地址</div>
             </div>
             <div class="mdui-textfield mdui-textfield-floating-label">
               <i class="mdui-icon materiality-icons">&#xe90b;</i>
               <label class="mdui-textfield-label">网站</label>
               <input name="url" class="mdui-textfield-input" type="url" autocomplete="new-password" value="<?php $this->remember('url'); ?>" />
+              <div class="mdui-textfield-error">请填写合法的网站地址</div>
             </div>
           <?php endif; ?>
           <?php $comments->cancelReply('<div class="mdui-chip mdui-typo"><span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90e;</i></span><span class="mdui-chip-title mdui-text-color-theme-accent">取消回复</span></div>'); ?>
           <div class="mdui-textfield mdui-textfield-floating-label">
             <i class="mdui-icon materiality-icons">&#xe911;</i>
             <label class="mdui-textfield-label">内容</label>
-            <textarea name="text" class="mdui-textfield-input" type="text"><?php $this->remember('text'); ?></textarea>
+            <textarea name="text" class="mdui-textfield-input" type="text" required><?php $this->remember('text'); ?></textarea>
+            <div class="mdui-textfield-error">请填写内容</div>
           </div>
         </div>
         <div class="mdui-card-actions">
