@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="mdui-card-content">
-      <div class="mdui-typo"><?php $this->content(); ?></div>
+      <div class="mdui-typo"><?php $this->content(); ?><hr /></div>
       <?php if ($this->tags): ?>
         <div class="mdui-chip mdui-m-t-3">
           <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90a;</i></span>

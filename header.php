@@ -68,7 +68,7 @@
 
         <!-- 暗色模式切换按钮 -->
         <?php if ($this->options->appbar && in_array('toggledark', $this->options->appbar)): ?>
-          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="toggledark()"><i class="mdui-icon materiality-icons" id="theme-btn">&#xe901;</i></span>
+          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="toggledark()"><i class="mdui-icon materiality-icons" id="theme-btn" mdui-tooltip="{content: '切换为暗色模式'}">&#xe901;</i></span>
         <?php endif; ?>
 
         <!-- RSS 按钮 -->
@@ -147,7 +147,7 @@
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
               <?php while ($category->next()): ?>
-                <a href="<?php $category->permalink(); ?>" class="mdui-list-item mdui-ripple"><?php $category->name(); ?></a>
+                <a href="<?php $category->permalink(); ?>" class="mdui-list-item mdui-ripple" mdui-tooltip="{content: '<?php $category->description(); ?>'}"><?php $category->name(); ?></a>
               <?php endwhile; ?>
             </div>
           </div>
@@ -176,7 +176,7 @@
             <div class="mdui-collapse-item-body mdui-list">
               <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
               <?php while ($comments->next()): ?>
-                <a href="<?php $comments->permalink(); ?>" class="mdui-list-item mdui-ripple"><?php $comments->author(false); ?>: <?php $comments->excerpt(28, '...'); ?></a>
+                <a href="<?php $comments->permalink(); ?>" class="mdui-list-item mdui-ripple" mdui-tooltip="{content: '发表于：<?php $comments->title(); ?>'}"><?php $comments->author(false); ?>: <?php $comments->excerpt(28, '...'); ?></a>
               <?php endwhile; ?>
             </div>
           </div>
@@ -190,7 +190,7 @@
               <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
-              <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=F Y')->parse('<a href="{permalink}" class="mdui-list-item mdui-ripple">{date}</a>'); ?>
+              <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=F Y')->parse('<a href="{permalink}" class="mdui-list-item mdui-ripple" mdui-tooltip="{content: \'{count} 篇文章\'}">{date}</a>'); ?>
             </div>
           </div>
         <?php endif; ?>
@@ -206,7 +206,7 @@
               <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=5')->to($tags); ?>
               <?php if ($tags->have()): ?>
                 <?php while ($tags->next()): ?>
-                  <a href="<?php $tags->permalink(); ?>" class="mdui-list-item mdui-ripple" mdui-tooltip="{content: '<?php $tags->count(); ?> 个话题'}"><?php $tags->name(); ?></a>
+                  <a href="<?php $tags->permalink(); ?>" class="mdui-list-item mdui-ripple" mdui-tooltip="{content: '<?php $tags->count(); ?> 篇文章'}"><?php $tags->name(); ?></a>
                 <?php endwhile; ?>
               <?php else: ?>
                 <a class="mdui-list-item mdui-ripple">没有任何标签</a>

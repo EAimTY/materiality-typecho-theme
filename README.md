@@ -25,9 +25,16 @@
 [https://www.eaimty.com/theme.html](https://www.eaimty.com/theme.html)
 
 ## 版本
-3.3.2
+3.3.3
 
 ## 更新日志
+#### 3.3.3
+- 在窄屏幕设备上点击Drawer中的链接后会自动收回Drawer
+- 将标签与文章内容用分割线分开
+- 加入了Drawer中分类的描述Tooltip
+- 加入了Drawer中评论的所在文章Tooltip
+- 加入了Drawer中按月归档的文章数Tooltip
+- 加入了亮/暗色模式切换按钮的提示Tooltip
 #### 3.3.2
 - 亮暗色模式可以在Pjax加载时自动切换了
 - 为评论中的头像启用了懒加载
