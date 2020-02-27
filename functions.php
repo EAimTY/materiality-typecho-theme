@@ -1,8 +1,7 @@
 <?php
 function themeInit($archive) {
-  //关闭反垃圾保护和来源页检测以兼容Pjax评论
+  //关闭评论反垃圾保护以兼容Pjax
   Helper::options()->commentsAntiSpam = false;
-  Helper::options()->commentsCheckReferer = false;
 }
 
 // 获取随机文章
