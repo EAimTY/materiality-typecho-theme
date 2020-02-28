@@ -5,7 +5,7 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 3.3.4
+ * @version 3.4
  * @link https://www.eaimty.com/
  */
 
@@ -36,9 +36,16 @@ $this->need('header.php');
   <?php endwhile; ?>
 
   <!-- 跳页按钮 -->
-  <div class="page-nav mdui-m-y-3">
-    <div class="total-pages"><?php echo ceil($this->getTotal()); ?></div>
-    <?php $this->pageNav('&#xe912;', '&#xe913;', 2, '...', array('itemTag' => '', 'textTag' => 'div', 'currentClass' => 'mdui-btn-active', 'wrapTag' => 'div', 'wrapClass' => 'mdui-btn-group')); ?>
+  <div class="mdui-m-y-3" id="page-nav">
+    <?php $this->pageNav('&#xe912;', '&#xe913;', 2, '...', array(
+      'itemTag'      => '',
+      'textTag'      => 'div class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-tooltip="{content: \'共有' . ceil($this->getTotal()) . '篇文章\'}"',
+      'currentClass' => 'mdui-btn-active',
+      'prevClass'    => 'mdui-icon materiality-icons',
+      'nextClass'    => 'mdui-icon materiality-icons',
+      'wrapTag'      => 'div',
+      'wrapClass'    => 'mdui-btn-group'
+    )); ?>
   </div>
 
 </div>

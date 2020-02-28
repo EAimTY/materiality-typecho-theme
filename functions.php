@@ -1,7 +1,18 @@
 <?php
 function themeInit($archive) {
-  //关闭评论反垃圾保护以兼容Pjax
+  // 关闭评论反垃圾保护以兼容Pjax
   Helper::options()->commentsAntiSpam = false;
+
+  // 关闭评论分页
+  Helper::options()->commentsPageBreak = false;
+
+  // 用lazyLoadImg函数处理内容
+  $archive->content = lazyLoadImg($archive->content);
+}
+
+// 替换页面中的图片标签使其支持lazyload
+function lazyLoadImg($content) {
+  return str_replace('<img src="', '<img class="lazyload" data-src="', $content);
 }
 
 // 获取随机文章
