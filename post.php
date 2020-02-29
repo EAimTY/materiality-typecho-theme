@@ -7,16 +7,16 @@
       <div class="mdui-card-primary-title mdui-text-color-theme-accent"><?php $this->title(); ?></div>
       <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
         <?php $this->date(); ?>
-        <?php if ($this->options->articleinfo && in_array('showauthor', $this->options->articleinfo)): ?>
+        <?php if (in_array('showauthor', $this->options->articleinfo)): ?>
           <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
         <?php endif; ?>
-        <?php if ($this->category && $this->options->articleinfo && in_array('showcategory', $this->options->articleinfo)): ?>
+        <?php if ($this->category && in_array('showcategory', $this->options->articleinfo)): ?>
           <span> | </span><i class="mdui-icon materiality-icons">&#xe906;</i><?php $this->category(', '); ?>
         <?php endif; ?>
       </div>
     </div>
     <div class="mdui-card-content">
-      <div class="mdui-typo"><?php $this->content(); ?></div>
+      <div class="mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $this->content); ?></div>
       <?php if ($this->tags): ?>
         <div class="mdui-typo"><hr /></div>
         <div class="mdui-chip">

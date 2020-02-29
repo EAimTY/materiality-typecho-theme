@@ -7,12 +7,12 @@
       <div class="mdui-card-primary-title mdui-text-color-theme-accent"><?php $this->title(); ?></div>
       <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
         <?php $this->date(); ?>
-        <?php if ($this->options->articleinfo && in_array('showauthor', $this->options->articleinfo)): ?>
+        <?php if (in_array('showauthor', $this->options->articleinfo)): ?>
           <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
         <?php endif; ?>
       </div>
     </div>
-    <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
+    <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $this->content); ?></div>
   </div>
 
   <?php $this->need('comments.php'); ?>

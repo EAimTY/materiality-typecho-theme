@@ -17,7 +17,7 @@
     <div class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
     <div class="mdui-card-header-subtitle"><?php $comments->date(); ?></div>
   </div>
-  <div class="mdui-card-content mdui-typo"><?php $comments->content(); ?></div>
+  <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $comments->content); ?></div>
   <?php $comments->reply('<div class="mdui-card-actions" id="reply-' . $comments->theId . '"><button class="mdui-btn mdui-ripple mdui-text-color-theme-accent" onclick="replyComment(\'' . $comments->theId . '\')">回复</button></div>'); ?>
   <?php if ($comments->children): ?>
     <div class="mdui-container">
@@ -86,7 +86,7 @@
     </div>
 
   <!-- 评论已关闭 -->
-  <?php elseif (!$this->allow('comment') && $this->options->articleinfo && in_array('commentdisabed', $this->options->articleinfo)): ?>
+  <?php elseif (!$this->allow('comment') && in_array('commentdisabed', $this->options->articleinfo)): ?>
     <div class="mdui-chip mdui-m-b-2">
       <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90e;</i></span>
       <span class="mdui-chip-title">评论已关闭</span>

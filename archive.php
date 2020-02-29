@@ -12,27 +12,45 @@
     ), '', ''); ?></span>
   </div>
 
-  <!-- 文章列表 -->
-  <?php while ($this->next()): ?>
-    <div class="mdui-card mdui-shadow-3 mdui-hoverable mdui-m-y-3">
-      <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
-        <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
-          <?php $this->date(); ?>
-          <?php if ($this->options->articleinfo && in_array('showauthor', $this->options->articleinfo)): ?>
-            <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
-          <?php endif; ?>
-          <?php if ($this->category && $this->options->articleinfo && in_array('showcategory', $this->options->articleinfo)): ?>
-            <span> | </span><i class="mdui-icon materiality-icons">&#xe906;</i><?php $this->category(', '); ?>
-          <?php endif; ?>
+  <!-- 判断是否有输出内容 -->
+  <?php if ($this->have()): ?>
+
+    <!-- 输出内容列表 -->
+    <?php while ($this->next()): ?>
+      <div class="mdui-card mdui-shadow-3 mdui-hoverable mdui-m-y-3">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
+          <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
+            <?php $this->date(); ?>
+            <?php if (in_array('showauthor', $this->options->articleinfo)): ?>
+              <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+            <?php endif; ?>
+            <?php if ($this->category && in_array('showcategory', $this->options->articleinfo)): ?>
+              <span> | </span><i class="mdui-icon materiality-icons">&#xe906;</i><?php $this->category(', '); ?>
+            <?php endif; ?>
+          </div>
+        </div>
+        <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $this->content); ?></div>
+        <div class="mdui-card-actions">
+          <a class="mdui-btn mdui-ripple mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>">继续阅读</a>
         </div>
       </div>
-      <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
-      <div class="mdui-card-actions">
-        <a class="mdui-btn mdui-ripple mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>">继续阅读</a>
+    <?php endwhile; ?>
+
+  <?php else: ?>
+
+    <!-- 提示未找到内容 -->
+    <div class="mdui-card mdui-shadow-3 mdui-m-y-3">
+      <div class="mdui-card-primary">
+        <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent">没有找到内容</a></div>
+      </div>
+      <div class="mdui-card-content mdui-typo">
+        <div class="mdui-typo-title mdui-m-y-2">这些文章可能也很有趣？</div>
+        <?php getRandomPosts(5);?>
       </div>
     </div>
-  <?php endwhile; ?>
+
+  <?php endif; ?>
 
   <!-- 跳页按钮 -->
   <div class="mdui-m-y-3" id="page-nav">
