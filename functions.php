@@ -72,13 +72,14 @@ function themeConfig($form) {
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', array(
     'hidedrawer' => _t('默认隐藏侧边栏'),
     'showsearch' => _t('显示搜索框'),
+    'showindex' => _t('显示首页'),
     'showcategory' => _t('显示文章分类'),
     'showposts' => _t('显示最新文章'),
     'showcomments' => _t('显示最新评论'),
     'showarchives' => _t('显示按月归档'),
     'showtags' => _t('显示常用标签')
   ),
-  array('hidedrawer', 'showsearch', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags'), _t('侧边栏选项'));
+  array('hidedrawer', 'showsearch', 'showindex', 'showcategory', 'showposts', 'showcomments', 'showarchives', 'showtags'), _t('侧边栏选项'));
   $form->addInput($drawer->multiMode());
 
   $articleinfo = new Typecho_Widget_Helper_Form_Element_Checkbox('articleinfo', array(

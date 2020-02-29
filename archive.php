@@ -1,9 +1,9 @@
 <?php $this->need('header.php'); ?>
-<div class="mdui-container">
+<div class="mdui-container" id="main">
 
   <!-- 页面面包屑 -->
   <div class="mdui-chip mdui-typo mdui-m-t-3">
-    <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90d;</i></span>
+    <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90e;</i></span>
     <span class="mdui-chip-title">您正在查看：<?php $this->archiveTitle(array(
       'category'  =>  _t(' %s 分类下的文章'),
       'search'    =>  _t('包含关键字 %s 的文章'),
@@ -26,7 +26,7 @@
               <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
             <?php endif; ?>
             <?php if ($this->category && in_array('showcategory', $this->options->articleinfo)): ?>
-              <span> | </span><i class="mdui-icon materiality-icons">&#xe906;</i><?php $this->category(', '); ?>
+              <span> | </span><i class="mdui-icon materiality-icons">&#xe907;</i><?php $this->category(', '); ?>
             <?php endif; ?>
           </div>
         </div>
@@ -54,7 +54,7 @@
 
   <!-- 跳页按钮 -->
   <div class="mdui-m-y-3" id="page-nav">
-    <?php $this->pageNav('&#xe912;', '&#xe913;', 2, '...', array(
+    <?php $this->pageNav('&#xe913;', '&#xe914;', 2, '...', array(
       'itemTag'      => '',
       'textTag'      => 'div class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-tooltip="{content: \'共有' . ceil($this->getTotal()) . '篇文章\'}"',
       'currentClass' => 'mdui-btn-active',

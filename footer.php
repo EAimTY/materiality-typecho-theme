@@ -4,22 +4,22 @@
     <div class="footer-icons mdui-col-xs-3 mdui-valign">
       <div class="mdui-center">
         <?php if ($this->options->email): ?>
-          <a href="mailto:<?php $this->options->email(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '邮箱'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe910;</i></a>
+          <a href="mailto:<?php $this->options->email(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '邮箱'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe911;</i></a>
         <?php endif; ?>
         <?php if ($this->options->github): ?>
-          <a href="https://github.com/<?php $this->options->github(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'GitHub'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe914;</i></a>
+          <a href="https://github.com/<?php $this->options->github(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'GitHub'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe915;</i></a>
         <?php endif; ?>
         <?php if ($this->options->twitter): ?>
-          <a href="https://twitter.com/<?php $this->options->twitter(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Twitter'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe915;</i></a>
+          <a href="https://twitter.com/<?php $this->options->twitter(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Twitter'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe916;</i></a>
         <?php endif; ?>
         <?php if ($this->options->facebook): ?>
-          <a href="https://www.facebook.com/<?php $this->options->facebook(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Facebook'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe916;</i></a>
+          <a href="https://www.facebook.com/<?php $this->options->facebook(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Facebook'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe917;</i></a>
         <?php endif; ?>
         <?php if ($this->options->weibo): ?>
-          <a href="<?php $this->options->weibo(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '微博'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe917;</i></a>
+          <a href="<?php $this->options->weibo(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '微博'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe918;</i></a>
         <?php endif; ?>
         <?php if ($this->options->netease_music): ?>
-          <a href="<?php $this->options->netease_music(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '网易云音乐'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe918;</i></a>
+          <a href="<?php $this->options->netease_music(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '网易云音乐'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe919;</i></a>
         <?php endif; ?>
       </div>
     </div>
@@ -44,7 +44,7 @@
 </div>
 
 <!-- 返回顶部按钮 -->
-<button class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" id="scrolltop" onclick="window.scroll({ top: 0, left: 0, behavior: 'smooth' })"><i class="mdui-icon materiality-icons">&#xe919;</i></button>
+<button class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" id="scrolltop" onclick="window.scroll({ top: 0, left: 0, behavior: 'smooth' })"><i class="mdui-icon materiality-icons">&#xe91a;</i></button>
 
 </body>
 <?php $this->footer(); ?>

@@ -117,7 +117,7 @@
       <!-- 头像与简介 -->
       <div class="billboard">
         <a href="<?php $this->options->siteUrl(); ?>" class="logo mdui-m-y-2 mdui-m-l-2" style="background:url('<?php $this->options->avatar(); ?>');background-size:contain"></a>
-        <div class="description mdui-m-x-2 mdui-text-color-white-text"><?php $this->options->description(); ?></div>
+        <div class="description mdui-m-x-2 mdui-text-color-white-text mdui-valign"><?php $this->options->description(); ?></div>
       </div>
 
       <div class="mdui-list" mdui-collapse="{accordion: true}">
@@ -131,12 +131,20 @@
           <div class="mdui-divider"></div>
         <?php endif; ?>
 
+        <!-- 首页 -->
+        <?php if (in_array('showindex', $this->options->drawer)): ?>
+          <a href="<?php $this->options->siteUrl(); ?>" class="mdui-list-item mdui-ripple" id="home-url">
+            <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe905;</i>
+            <div class="mdui-list-item-content mdui-m-r-4">首页</div>
+          </a>
+        <?php endif; ?>
+
         <!-- 独立页面 -->
         <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
         <?php if ($pages->have()): ?>
           <?php while ($pages->next()): ?>
             <a href="<?php $pages->permalink(); ?>" class="mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe905;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe906;</i>
               <div class="mdui-list-item-content mdui-m-r-4"><?php $pages->title(); ?></div>
             </a>
           <?php endwhile; ?>
@@ -148,9 +156,9 @@
         <?php if ($categories->have() && in_array('showcategory', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe906;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe907;</i>
               <div class="mdui-list-item-content">文章分类</div>
-              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php while ($categories->next()): ?>
@@ -164,9 +172,9 @@
         <?php if ($posts->have() && in_array('showposts', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe907;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe908;</i>
               <div class="mdui-list-item-content">最新文章</div>
-              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php while ($posts->next()): ?>
@@ -180,9 +188,9 @@
         <?php if ($comments->have() && in_array('showcomments', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe908;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe909;</i>
               <div class="mdui-list-item-content">最新评论</div>
-              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php while ($comments->next()): ?>
@@ -196,9 +204,9 @@
         <?php if ($archives->have() && in_array('showarchives', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe909;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90a;</i>
               <div class="mdui-list-item-content">按月归档</div>
-              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php while ($archives->next()): ?>
@@ -212,9 +220,9 @@
         <?php if ($tags->have() && in_array('showtags', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90a;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90b;</i>
               <div class="mdui-list-item-content">常用标签</div>
-              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php while ($tags->next()): ?>
@@ -227,9 +235,9 @@
         <?php if ($this->options->links): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90b;</i>
+              <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90c;</i>
               <div class="mdui-list-item-content">友情链接</div>
-              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90c;</i>
+              <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
               <?php getLinks($this->options->links); ?>
@@ -242,4 +250,5 @@
     <div class="load-indicator mdui-shadow-3 mdui-valign">
       <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
     </div>
-    <div class="page-content mdui-hidden">
+    <div class="page-content">
+      <div class="translate-box"></div>

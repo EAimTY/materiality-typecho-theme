@@ -5,13 +5,13 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 3.5.1
+ * @version 3.5.2
  * @link https://www.eaimty.com/
  */
 
 $this->need('header.php');
 ?>
-<div class="mdui-container">
+<div class="mdui-container" id="main">
 
   <!-- 文章列表 -->
   <?php while ($this->next()): ?>
@@ -24,7 +24,7 @@ $this->need('header.php');
             <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
           <?php endif; ?>
           <?php if ($this->category && in_array('showcategory', $this->options->articleinfo)): ?>
-            <span> | </span><i class="mdui-icon materiality-icons">&#xe906;</i><?php $this->category(', '); ?>
+            <span> | </span><i class="mdui-icon materiality-icons">&#xe907;</i><?php $this->category(', '); ?>
           <?php endif; ?>
         </div>
       </div>
@@ -37,7 +37,7 @@ $this->need('header.php');
 
   <!-- 跳页按钮 -->
   <div class="mdui-m-y-3" id="page-nav">
-    <?php $this->pageNav('&#xe912;', '&#xe913;', 2, '...', array(
+    <?php $this->pageNav('&#xe913;', '&#xe914;', 2, '...', array(
       'itemTag'      => '',
       'textTag'      => 'div class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-tooltip="{content: \'共有' . ceil($this->getTotal()) . '篇文章\'}"',
       'currentClass' => 'mdui-btn-active',

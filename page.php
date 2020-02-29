@@ -1,5 +1,5 @@
 <?php $this->need('header.php'); ?>
-<div class="mdui-container">
+<div class="mdui-container" id="main">
 
   <!-- 页面内容 -->
   <div class="mdui-card mdui-shadow-3 mdui-m-y-3">
