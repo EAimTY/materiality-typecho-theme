@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="mdui-card-content">
-      <div class="mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $this->content); ?></div>
+      <div class="mdui-typo"><?php $this->content(); ?></div>
       <?php if ($this->tags): ?>
         <div class="mdui-typo"><hr /></div>
         <div class="mdui-chip">

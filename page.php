@@ -12,7 +12,7 @@
         <?php endif; ?>
       </div>
     </div>
-    <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $this->content); ?></div>
+    <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
   </div>
 
   <?php $this->need('comments.php'); ?>

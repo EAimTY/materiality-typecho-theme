@@ -30,7 +30,7 @@
             <?php endif; ?>
           </div>
         </div>
-        <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $this->content); ?></div>
+        <div class="mdui-card-content mdui-typo"><?php $this->content(); ?></div>
         <div class="mdui-card-actions">
           <a class="mdui-btn mdui-ripple mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>">继续阅读</a>
         </div>

@@ -5,6 +5,9 @@ function themeInit($archive) {
 
   // 关闭评论分页
   Helper::options()->commentsPageBreak = false;
+
+  // 修改内容中需要懒加载的图片元素
+  $archive->content = preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $archive->content);
 }
 
 // 获取随机文章
