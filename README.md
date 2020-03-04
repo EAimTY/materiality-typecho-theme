@@ -2,7 +2,7 @@
 
 ### 一款简洁并专注于显示文字内容的 Material Design 风格 Typecho 主题，基于 [MDUI](https://www.mdui.org/)
 
-## 特点
+## 特点：
 - 遵循 Material Design
 - 样式简洁，专注于显示文字内容
 - Pjax无刷新加载页面
