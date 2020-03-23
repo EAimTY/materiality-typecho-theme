@@ -1,3 +1,4 @@
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php function threadedComments($comments, $options) {
   $commentClass = '';
   if ($comments->authorId) {
@@ -9,9 +10,8 @@
   }
   $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
 ?>
-
-<!-- 评论模板 -->
 <div id="<?php $comments->theId(); ?>" class="mdui-card mdui-shadow-3 mdui-m-y-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
+  <div id="<?php $comments->theId(); ?>-anchor" class="anchor"></div>
   <div class="mdui-card-header">
     <div class="mdui-card-header-avatar"><img class="avatar lazyload" data-src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=monsterid" /></div>
     <div class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
@@ -26,20 +26,12 @@
   <?php endif; ?>
 </div>
 <?php } ?>
-
 <div id="comments">
-
-  <!-- 获取respondId -->
   <div class="mdui-hidden" id="respondid"><?php $this->respondId(); ?></div>
-
   <?php $this->comments()->to($comments); ?>
-
-  <!-- 列出已有评论 -->
   <?php if ($comments->have()): ?>
-    <?php $comments->listComments(array('before' => '', 'after' => '')); ?>
+    <?php $comments->listComments(['before' => '', 'after' => '']); ?>
   <?php endif; ?>
-
-  <!-- 添加评论 -->
   <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>">
       <div class="mdui-card mdui-shadow-3 mdui-m-y-3">
@@ -84,13 +76,10 @@
         </form>
       </div>
     </div>
-
-  <!-- 评论已关闭 -->
-  <?php elseif (!$this->allow('comment') && in_array('commentdisabed', $this->options->articleinfo)): ?>
+  <?php elseif (!$this->allow('comment') && in_array('comment_disabled', $this->options->article)): ?>
     <div class="mdui-chip mdui-m-b-2">
       <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90f;</i></span>
       <span class="mdui-chip-title">评论已关闭</span>
     </div>
   <?php endif; ?>
-
 </div>

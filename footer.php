@@ -1,6 +1,6 @@
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+</div>
   <footer class="mdui-color-theme">
-
-    <!-- 页脚个人信息 -->
     <div class="footer-icons mdui-col-xs-3 mdui-valign">
       <div class="mdui-center">
         <?php if ($this->options->email): ?>
@@ -23,13 +23,9 @@
         <?php endif; ?>
       </div>
     </div>
-
-    <!-- 页脚Copyright -->
     <div class="footer-copyright mdui-col-xs-6 mdui-valign">
       <div class="mdui-center">Copyright &copy; <?php echo date("Y"); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a></div>
     </div>
-
-    <!-- 页脚网站信息 -->
     <div class="footer-credit mdui-col-xs-3 mdui-valign">
       <div class="mdui-center">
         <div>Powered by <a href="http://typecho.org/" target="_blank">Typecho)))</a></div>
@@ -39,13 +35,9 @@
         <?php endif; ?>
       </div>
     </div>
-
   </footer>
 </div>
-
-<!-- 返回顶部按钮 -->
-<button class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" id="scrolltop" onclick="window.scroll({ top: 0, left: 0, behavior: 'smooth' })"><i class="mdui-icon materiality-icons">&#xe91a;</i></button>
-
+<a class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" id="scrolltop" href="#top"><i class="mdui-icon materiality-icons">&#xe91a;</i></a>
 </body>
 <?php $this->footer(); ?>
 </html>
