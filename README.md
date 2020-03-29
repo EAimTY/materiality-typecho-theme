@@ -38,7 +38,7 @@ https://github.com/EAimTY/materiality-typecho-theme
 4. 清除浏览器缓存、CDN缓存与网站Cookies以免与之前使用的主题发生冲突
 
 # 版本
-4.0.1
+4.0.2
 
 # 更新日志
 见 [CHANGELOG](https://github.com/EAimTY/materiality-typecho-theme/blob/master/CHANGELOG.md)

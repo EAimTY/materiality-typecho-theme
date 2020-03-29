@@ -16,12 +16,14 @@
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
+    <?php if (in_array('smoothScroll', $this->options->feature)): ?>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
+    <?php endif; ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>"></script>
-    <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->appbar)): ?>
+    <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>"></script>
     <?php endif; ?>
-    <?php if (in_array('autoDark', $this->options->appbar)): ?>
+    <?php if (in_array('autoDark', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/autodark.min.js'); ?>"></script>
     <?php endif; ?>
     <?php if ($this->options->avatar): ?>

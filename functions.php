@@ -1,10 +1,12 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
 function storeColor($colorCode) {
   if (!isset($_COOKIE["themeColor"])) {
     setcookie("themeColor", $colorCode, time() + 604800);
   }
 }
+
 function getColor($color) {
   $code = [
     'indigo'      => '3F51B5',
@@ -29,6 +31,7 @@ function getColor($color) {
   ];
   return $code[$color];
 }
+
 function createIndex($obj) {
   $GLOBALS["indexCount"] = 0;
   $obj = preg_replace_callback('/<h([1-6])(.*?)>(.*?)<\/h\1>/i', function($obj) {
@@ -38,6 +41,7 @@ function createIndex($obj) {
   }, $obj);
   return $obj;
 }
+
 function getIndex() {
   if ($GLOBALS["index"]) {
     $index = '<ul class="index mdui-text-color-theme-accent">' . "\n";
@@ -70,6 +74,7 @@ function getIndex() {
     echo $index;
   }
 }
+
 function getRandomPosts($num) {
   $db = Typecho_Db::get();
   $adapterName = $db->getAdapterName();
@@ -90,18 +95,17 @@ function getRandomPosts($num) {
     }
   }
 }
+
 function getLinks($obj) {
   $links_arr = explode("\n", trim($obj));
   foreach ($links_arr as $link) {
-    $link = explode(",", $link);
-    foreach ($link as $seq => $val) {
-      $link[$seq] = substr(trim($val), 1, -1);
-    }
+    $link = explode("\", \"", substr(trim($link), 1, -1));
     $link[1] = str_replace("'", "\\'", $link[1]);
     $link[1] = str_replace("\"", "&quot;", $link[1]);
     echo '<a class="mdui-list-item mdui-ripple" target="_blank" rel="external friend noopener" href="' . $link[2] . (($link[1]) ? '" mdui-tooltip="{content: \'' . $link[1] . '\'}">' : '">') . $link[0] . '</a>';
   }
 }
+
 function themeInit($archive) {
   Helper::options()->commentsAntiSpam = false;
   Helper::options()->commentsPageBreak = false;
@@ -110,6 +114,7 @@ function themeInit($archive) {
     $archive->content = createIndex($archive->content);
   }
 }
+
 function themeFields($layout) {
   if (strpos($_SERVER["PHP_SELF"], "write-post.php") !== false) {
     $index = new Typecho_Widget_Helper_Form_Element_Select('index', ['show' => '显示', 'hide' => '不显示'], 'show', _t('显示目录'), _t('是否在文章顶部显示目录？'));
@@ -121,32 +126,48 @@ function themeFields($layout) {
     $layout->addItem($index);
   }
 }
+
 function themeConfig($cfg) {
   $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像及站点LOGO'), _t('输入侧边栏头像及站点LOGO图片链接，不显示则留空'));
   $cfg->addInput($avatar);
+
   $email = new Typecho_Widget_Helper_Form_Element_Text('email', NULL, NULL, _t('邮箱'), _t('输入联系邮箱，不显示则留空'));
   $cfg->addInput($email);
+
   $github = new Typecho_Widget_Helper_Form_Element_Text('github', NULL, NULL, _t('GitHub'), _t('输入GitHub用户名，不显示则留空'));
   $cfg->addInput($github);
+
   $twitter = new Typecho_Widget_Helper_Form_Element_Text('twitter', NULL, NULL, _t('Twitter'), _t('输入Twitter用户名，不显示则留空'));
   $cfg->addInput($twitter);
+
   $facebook = new Typecho_Widget_Helper_Form_Element_Text('facebook', NULL, NULL, _t('FaceBook'), _t('输入FaceBook用户名，不显示则留空'));
   $cfg->addInput($facebook);
+
   $weibo = new Typecho_Widget_Helper_Form_Element_Text('weibo', NULL, NULL, _t('微博'), _t('输入微博用户页链接地址，不显示则留空'));
   $cfg->addInput($weibo);
+
   $netease_music = new Typecho_Widget_Helper_Form_Element_Text('netease_music', NULL, NULL, _t('网易云音乐'), _t('输入网易云音乐用户链接地址，不显示则留空'));
   $cfg->addInput($netease_music);
+
   $miibeian = new Typecho_Widget_Helper_Form_Element_Text('miibeian', NULL, NULL, _t('备案号'), _t('输入备案号，不显示则留空'));
   $cfg->addInput($miibeian);
-  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述", "友情链接URL"</i> 的格式输入友情链接，一条一行，例如：<br /><i>"EAimTY的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
+
+  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述", "友情链接URL"</i> 的格式输入友情链接（请注意逗号后的空格），一条一行，例如：<br /><i>"EAimTY的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
   $cfg->addInput($links);
+
+  $feature = new Typecho_Widget_Helper_Form_Element_Checkbox('feature', [
+    'autoDark' => _t('自动切换至暗色模式（20:00~7:00）'),
+    'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面轻微掉帧）')
+  ], ['autoDark', 'smoothScroll'], _t('主题功能设置'));
+  $cfg->addInput($feature->multiMode());
+
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', [
     'darkToggle' => _t('显示暗色模式切换按钮'),
-    'autoDark' => _t('自动切换暗色模式（20:00~7:00）'),
     'rss' => _t('显示RSS按钮'),
     'admin' => _t('显示管理后台按钮')
-  ], ['darkToggle', 'autoDark', 'rss'], _t('Appbar选项'));
+  ], ['darkToggle', 'rss'], _t('顶栏设置'));
   $cfg->addInput($appbar->multiMode());
+
   $drawer = new Typecho_Widget_Helper_Form_Element_Checkbox('drawer', [
     'hidden' => _t('默认隐藏侧边栏'),
     'search' => _t('显示搜索框'),
@@ -156,14 +177,16 @@ function themeConfig($cfg) {
     'comments' => _t('显示最新评论'),
     'archives' => _t('显示按月归档'),
     'tags' => _t('显示常用标签')
-  ], ['search', 'home', 'categories', 'posts', 'comments', 'archives', 'tags'], _t('Drawer选项'));
+  ], ['search', 'home', 'categories', 'posts', 'comments', 'archives', 'tags'], _t('侧边栏设置'));
   $cfg->addInput($drawer->multiMode());
+
   $article = new Typecho_Widget_Helper_Form_Element_Checkbox('article', [
     'author' => _t('显示作者'),
     'category' => _t('显示分类'),
     'comment_disabled' => _t('显示“评论已关闭”')
-  ], ['author', 'category', 'comment_disabled'], _t('文章信息选项'));
+  ], ['author', 'category', 'comment_disabled'], _t('文章信息设置'));
   $cfg->addInput($article->multiMode());
+
   $primaryColor = new Typecho_Widget_Helper_Form_Element_Select('primaryColor', [
     'indigo' => 'Indigo',
     'red' => 'Red',
@@ -186,6 +209,7 @@ function themeConfig($cfg) {
     'blue-grey' => 'Blue Grey'
   ], 'indigo', _t('主题主色调'), _t('选择主题主色调'));
   $cfg->addInput($primaryColor->multiMode());
+
   $accentColor = new Typecho_Widget_Helper_Form_Element_Select('accentColor', [
     'pink' => 'Pink',
     'red' => 'Red',
