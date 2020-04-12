@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
-<div class="mdui-card mdui-shadow-3 mdui-m-y-3">
+<div class="mdui-card mdui-m-y-3">
   <div class="mdui-card-primary">
     <div class="mdui-card-primary-title mdui-text-color-theme-accent"><?php $this->title(); ?></div>
     <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">

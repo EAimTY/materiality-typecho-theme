@@ -4,7 +4,7 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 4.0.3
+ * @version 4.1
  * @link https://www.eaimty.com/
  */
 ?>
@@ -12,13 +12,13 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 <?php while ($this->next()): ?>
-  <div class="mdui-card mdui-shadow-3 mdui-hoverable mdui-m-y-3">
+  <div class="mdui-card mdui-hoverable mdui-m-y-3">
     <div class="mdui-card-primary">
       <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
       <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
         <?php $this->date(); ?>
         <?php if (in_array('author', $this->options->article)): ?>
-          <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+          <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?><?php $this->author(); ?><?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?></a>
         <?php endif; ?>
         <?php if ($this->category && in_array('category', $this->options->article)): ?>
           <span> | </span><i class="mdui-icon materiality-icons">&#xe907;</i><?php $this->category(', '); ?>

@@ -1,7 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->appbar)): ?>
+<?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
   <?php storeColor(getColor($this->options->primaryColor)); ?>
 <?php endif; ?>
+<?php outputStart(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -36,16 +37,16 @@
         'search'   => _t('包含关键字 %s 的文章'),
         'tag'      => _t('标签 %s 下的文章'),
         'author'   => _t('%s 发布的文章')
-      ], '', ' - '); ?><?php $this->options->title(); ?></title>
+      ], '', ' - '); ?><?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?><?php $this->options->title(); ?><?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?></title>
   </head>
   <body class="<?php if (!in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?>">
     <header class="mdui-appbar mdui-appbar-fixed">
       <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
-        <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
+        <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?><?php $this->options->title(); ?><?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?></a>
         <div class="mdui-toolbar-spacer"></div>
         <?php if (in_array('darkToggle', $this->options->appbar)): ?>
-          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="darkToggle()"><i class="mdui-icon materiality-icons" id="darktoggle" mdui-tooltip="{content: '切换为暗色模式'}">&#xe901;</i></span>
+          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="darktoggle_btn" mdui-tooltip="{content: '切换为暗色模式'}" onclick="darkToggle()"><i class="mdui-icon materiality-icons" id="darktoggle_icon">&#xe901;</i></span>
         <?php endif; ?>
         <?php if (in_array('rss', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe903;</i></span>
@@ -190,13 +191,15 @@
               <i class="mdui-collapse-item-arrow mdui-icon materiality-icons">&#xe90d;</i>
             </div>
             <div class="mdui-collapse-item-body mdui-list">
-              <?php getLinks($this->options->links); ?>
+              <?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?>
+                <?php getLinks($this->options->links); ?>
+              <?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?>
             </div>
           </div>
         <?php endif; ?>
       </div>
     </div>
-    <div class="load-indicator mdui-shadow-3 mdui-valign">
+    <div class="load-indicator mdui-shadow-2 mdui-valign">
       <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
     </div>
     <div class="page-content">

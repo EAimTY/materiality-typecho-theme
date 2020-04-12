@@ -10,11 +10,11 @@
   }
   $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
 ?>
-<div id="<?php $comments->theId(); ?>" class="mdui-card mdui-shadow-3 mdui-m-y-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
+<div id="<?php $comments->theId(); ?>" class="mdui-card mdui-m-y-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
   <div id="<?php $comments->theId(); ?>-anchor" class="anchor"></div>
   <div class="mdui-card-header">
     <div class="mdui-card-header-avatar"><img class="avatar lazyload" data-src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=monsterid" /></div>
-    <div class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
+    <div name="comment-author" class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
     <div class="mdui-card-header-subtitle"><?php $comments->date(); ?></div>
   </div>
   <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $comments->content); ?></div>
@@ -34,7 +34,8 @@
   <?php endif; ?>
   <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>">
-      <div class="mdui-card mdui-shadow-3 mdui-m-y-3">
+      <?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?>
+      <div class="mdui-card mdui-m-y-3">
         <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
           <div class="mdui-card-header"><h2>添加新评论</h2></div>
           <div class="mdui-card-content">
@@ -54,7 +55,7 @@
                 <i class="mdui-icon materiality-icons">&#xe911;</i>
                 <label class="mdui-textfield-label">E-mail</label>
                 <input name="mail" class="mdui-textfield-input" type="email" autocomplete="new-password" value="<?php $this->remember('mail'); ?>" required />
-                <div class="mdui-textfield-error">请填写合法的E-mail地址</div>
+                <div class="mdui-textfield-error">请填写合法的电子邮箱地址</div>
               </div>
               <div class="mdui-textfield mdui-textfield-floating-label">
                 <i class="mdui-icon materiality-icons">&#xe90c;</i>
@@ -75,6 +76,7 @@
           </div>
         </form>
       </div>
+      <?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?>
     </div>
   <?php elseif (!$this->allow('comment') && in_array('comment_disabled', $this->options->article)): ?>
     <div class="mdui-chip mdui-m-b-2">

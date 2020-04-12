@@ -11,13 +11,13 @@
 </div>
 <?php if ($this->have()): ?>
   <?php while ($this->next()): ?>
-    <div class="mdui-card mdui-shadow-3 mdui-hoverable mdui-m-y-3">
+    <div class="mdui-card mdui-hoverable mdui-m-y-3">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
         <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
           <?php $this->date(); ?>
           <?php if (in_array('author', $this->options->article)): ?>
-            <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+            <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?><?php $this->author(); ?><?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?></a>
           <?php endif; ?>
           <?php if ($this->category && in_array('categories', $this->options->article)): ?>
             <span> | </span><i class="mdui-icon materiality-icons">&#xe907;</i><?php $this->category(', '); ?>
@@ -31,7 +31,7 @@
     </div>
   <?php endwhile; ?>
 <?php else: ?>
-  <div class="mdui-card mdui-shadow-3 mdui-m-y-3">
+  <div class="mdui-card mdui-m-y-3">
     <div class="mdui-card-primary">
       <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent">没有找到内容</a></div>
     </div>

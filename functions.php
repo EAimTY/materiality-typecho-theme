@@ -102,14 +102,158 @@ function getLinks($obj) {
     $link = explode("\", \"", substr(trim($link), 1, -1));
     $link[1] = str_replace("'", "\\'", $link[1]);
     $link[1] = str_replace("\"", "&quot;", $link[1]);
-    echo '<a class="mdui-list-item mdui-ripple" target="_blank" rel="external friend noopener" href="' . $link[2] . (($link[1]) ? '" mdui-tooltip="{content: \'' . $link[1] . '\'}">' : '">') . $link[0] . '</a>';
+    echo '<a class="mdui-list-item mdui-ripple" target="_blank" rel="external friend noopener" href="' . $link[2] . (($link[1]) ? '" mdui-tooltip="{content: \'' . $link[1] . '\'}">' : '">') . $link[0] . '</a>' . "\n";
   }
+}
+
+function pangu($text) {
+  $cjk = '' .
+         '\x{2e80}-\x{2eff}' .
+         '\x{2f00}-\x{2fdf}' .
+         '\x{3040}-\x{309f}' .
+         '\x{30a0}-\x{30ff}' .
+         '\x{3100}-\x{312f}' .
+         '\x{3200}-\x{32ff}' .
+         '\x{3400}-\x{4dbf}' .
+         '\x{4e00}-\x{9fff}' .
+         '\x{f900}-\x{faff}';
+  $patterns = array(
+    'cjk_quote' => array(
+      '([' . $cjk . '])(["\'])',
+      '$1 $2'
+    ),
+    'quote_cjk' => array(
+      '(["\'])([' . $cjk . '])',
+      '$1 $2'
+    ),
+    'fix_quote' => array(
+      '(["\']+)(\s*)(.+?)(\s*)(["\']+)',
+      '$1$3$5'
+    ),
+    'cjk_hash' => array(
+      '([' . $cjk . '])(#(\S+))',
+      '$1 $2'
+    ),
+    'hash_cjk' => array(
+      '((\S+)#)([' . $cjk . '])',
+      '$1 $3'
+    ),
+    'cjk_operator_ans' => array(
+      '([' . $cjk . '])([A-Za-zΑ-Ωα-ω0-9])([\+\-\*\/=&\\|<>])',
+      '$1 $2 $3'
+    ),
+    'ans_operator_cjk' => array(
+      '([\+\-\*\/=&\\|<>])([A-Za-zΑ-Ωα-ω0-9])([' . $cjk . '])',
+      '$1 $2 $3'
+    ),
+    'bracket' => array(
+      array(
+        '([' . $cjk . '])([<\[\{\(]+(.*?)[>\]\}\)]+)([' . $cjk . '])',
+        '$1 $2 $4'
+      ),
+      array(
+        'cjk_bracket' => array(
+          '([' . $cjk . '])([<>\[\]\{\}\(\)])',
+          '$1 $2'
+        ),
+        'bracket_cjk' => array(
+          '([<>\[\]\{\}\(\)])([' . $cjk . '])',
+          '$1 $2'
+        )
+      )
+    ),
+    'fix_bracket' => array(
+      '([<\[\{\(]+)(\s*)(.+?)(\s*)([>\]\}\)]+)',
+      '$1$3$5'
+    ),
+    'cjk_ans' => array(
+      '([' . $cjk . '])([A-Za-zΑ-Ωα-ω0-9`@&%\=\$\^\*\-\+\\/|\\\])',
+      '$1 $2'
+    ),
+    'ans_cjk' => array(
+      '([A-Za-zΑ-Ωα-ω0-9`~!%&=;\|\,\.\:\?\$\^\*\-\+\/\\\])([' . $cjk . '])',
+      '$1 $2'
+    )
+  );
+  foreach ($patterns as $key => $value) {
+    if ($key === 'bracket') {
+      $old = $text;
+      $new = preg_replace('/' . $value[0][0] . '/iu', $value[0][1], $text);
+      $text = $new;
+      if ($old === $new) {
+        foreach ($value[1] as $val) {
+          $text = preg_replace('/' . $val[0] . '/iu', $val[1], $text);
+        }
+      }
+      continue;
+    }
+    $text = preg_replace('/' . $value[0] . '/iu', $value[1], $text);
+  }
+  return $text;
+}
+
+function compressHTML($html) {
+  $search = [
+    '/[\\n\\r\\t]+/',
+    '/\\s{2,}/',
+    '/>\\s</',
+    '/\\/\\*.*?\\*\\//i',
+    '/<!--[^!]*-->/',
+    '/>\\s(.*?)/',
+    '/(.*?)\\s</'
+  ];
+  $replace = [
+    '',
+    ' ',
+    '><',
+    '',
+    '',
+    '>$1',
+    '$1<'
+  ];
+  $html = preg_replace($search, $replace, $html);
+  return $html;
+}
+
+function outputStart() {
+  ob_end_clean();
+  ob_start();
+}
+
+function outputEnd($pangu, $compressHTML) {
+  $output = ob_get_contents();
+  ob_end_clean();
+  $output = preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $output);
+  if ($pangu || $compressHTML) {
+    $output = preg_split('/(<nopangu.*?\/nopangu>|<pre.*?\/pre>|<code.*?\/code>|<textarea.*?\/textarea>|<div name="comment-author".*?\/div>)/msi', $output, NULL, PREG_SPLIT_DELIM_CAPTURE);
+    foreach ($output as $key => $value) {
+      if (
+        substr_compare($value, '<pre', 0, 4) !== 0 &&
+        substr_compare($value, '<code', 0, 5) !== 0 &&
+        substr_compare($value, '<textarea', 0, 9) !== 0
+      ) {
+        if ($pangu) {
+          if (substr_compare($value, '<nopangu', 0, 8) === 0) {
+            $value = substr($value, 9, -10);
+          } elseif (substr_compare($value, '<div name="comment-author"', 0, 24) === 0) {
+          } else {
+            $value = pangu($value);
+          }
+        }
+        if ($compressHTML) {
+          $value = compressHTML($value);
+        }
+        $output[$key] = $value;
+      }
+    }
+    $output = implode('', $output);
+  }
+  echo $output;
 }
 
 function themeInit($archive) {
   Helper::options()->commentsAntiSpam = false;
   Helper::options()->commentsPageBreak = false;
-  $archive->content = preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $archive->content);
   if ($archive->is("single")) {
     $archive->content = createIndex($archive->content);
   }
@@ -128,19 +272,19 @@ function themeFields($layout) {
 }
 
 function themeConfig($cfg) {
-  $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像及站点LOGO'), _t('输入侧边栏头像及站点LOGO图片链接，不显示则留空'));
+  $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像及站点 LOGO'), _t('输入侧边栏头像及站点 LOGO 图片链接，不显示则留空'));
   $cfg->addInput($avatar);
 
   $email = new Typecho_Widget_Helper_Form_Element_Text('email', NULL, NULL, _t('邮箱'), _t('输入联系邮箱，不显示则留空'));
   $cfg->addInput($email);
 
-  $github = new Typecho_Widget_Helper_Form_Element_Text('github', NULL, NULL, _t('GitHub'), _t('输入GitHub用户名，不显示则留空'));
+  $github = new Typecho_Widget_Helper_Form_Element_Text('github', NULL, NULL, _t('GitHub'), _t('输入 GitHub 用户名，不显示则留空'));
   $cfg->addInput($github);
 
-  $twitter = new Typecho_Widget_Helper_Form_Element_Text('twitter', NULL, NULL, _t('Twitter'), _t('输入Twitter用户名，不显示则留空'));
+  $twitter = new Typecho_Widget_Helper_Form_Element_Text('twitter', NULL, NULL, _t('Twitter'), _t('输入 Twitter 用户名，不显示则留空'));
   $cfg->addInput($twitter);
 
-  $facebook = new Typecho_Widget_Helper_Form_Element_Text('facebook', NULL, NULL, _t('FaceBook'), _t('输入FaceBook用户名，不显示则留空'));
+  $facebook = new Typecho_Widget_Helper_Form_Element_Text('facebook', NULL, NULL, _t('FaceBook'), _t('输入 FaceBook 用户名，不显示则留空'));
   $cfg->addInput($facebook);
 
   $weibo = new Typecho_Widget_Helper_Form_Element_Text('weibo', NULL, NULL, _t('微博'), _t('输入微博用户页链接地址，不显示则留空'));
@@ -152,13 +296,15 @@ function themeConfig($cfg) {
   $miibeian = new Typecho_Widget_Helper_Form_Element_Text('miibeian', NULL, NULL, _t('备案号'), _t('输入备案号，不显示则留空'));
   $cfg->addInput($miibeian);
 
-  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述", "友情链接URL"</i> 的格式输入友情链接（请注意逗号后的空格），一条一行，例如：<br /><i>"EAimTY的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
+  $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('友情链接'), _t('按照 <i>"友情链接名称", "站点描述", "友情链接 URL"</i> 的格式输入友情链接（请注意逗号后的空格），一条一行，例如：<br /><i>"EAimTY 的博客", "一个没什么技术的开源爱好者，一个苦逼的学生狗。", "https://www.eaimty.com/"</i>'));
   $cfg->addInput($links);
 
   $feature = new Typecho_Widget_Helper_Form_Element_Checkbox('feature', [
     'autoDark' => _t('自动切换至暗色模式（20:00~7:00）'),
-    'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面轻微掉帧）')
-  ], ['autoDark', 'smoothScroll'], _t('主题功能设置'));
+    'pangu' => _t('在中文、西文、数字间自动插入空格'),
+    'compressHTML' => _t('启用 HTML 压缩（需要消耗一定性能，不建议在服务器性能低或网站 PV 高时开启，且不建议与网页服务器的gzip功能同时开启）'),
+    'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面滚动时轻微掉帧）')
+  ], ['autoDark', 'pangu', 'smoothScroll'], _t('主题功能设置'));
   $cfg->addInput($feature->multiMode());
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', [

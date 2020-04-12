@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
-<div class="mdui-card mdui-shadow-3 mdui-m-y-3">
+<div class="mdui-card mdui-m-y-3">
   <div class="mdui-card-primary">
     <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent">页面没找到</a></div>
   </div>
