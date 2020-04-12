@@ -198,18 +198,14 @@ function compressHTML($html) {
     '/\\s{2,}/',
     '/>\\s</',
     '/\\/\\*.*?\\*\\//i',
-    '/<!--[^!]*-->/',
-    '/>\\s(.*?)/',
-    '/(.*?)\\s</'
+    '/<!--[^!]*-->/'
   ];
   $replace = [
     '',
     ' ',
     '><',
     '',
-    '',
-    '>$1',
-    '$1<'
+    ''
   ];
   $html = preg_replace($search, $replace, $html);
   return $html;
@@ -302,7 +298,7 @@ function themeConfig($cfg) {
   $feature = new Typecho_Widget_Helper_Form_Element_Checkbox('feature', [
     'autoDark' => _t('自动切换至暗色模式（20:00~7:00）'),
     'pangu' => _t('在中文、西文、数字间自动插入空格'),
-    'compressHTML' => _t('启用 HTML 压缩（需要消耗一定性能，不建议在服务器性能低或网站 PV 高时开启，且不建议与网页服务器的gzip功能同时开启）'),
+    'compressHTML' => _t('启用 HTML 压缩（需要消耗一定性能，不建议在服务器性能低或网站 PV 高时开启）'),
     'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面滚动时轻微掉帧）')
   ], ['autoDark', 'pangu', 'smoothScroll'], _t('主题功能设置'));
   $cfg->addInput($feature->multiMode());
