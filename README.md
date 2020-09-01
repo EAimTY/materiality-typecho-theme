@@ -1,5 +1,7 @@
 # materiality-typecho-theme
 
+<img src="https://raw.githubusercontent.com/EAimTY/materiality-typecho-theme/master/materiality-typecho-theme.png" alt="Logo" width="192" />
+
 一款简洁并专注于显示文字内容的 Material Design 风格 Typecho 主题，基于 [MDUI](https://www.mdui.org/)
 
 https://github.com/EAimTY/materiality-typecho-theme
@@ -40,7 +42,7 @@ https://github.com/EAimTY/materiality-typecho-theme
 4. 清除浏览器缓存、CDN 缓存与网站 Cookies 以免与之前使用的主题发生冲突
 
 # 版本
-4.1.1
+4.2
 
 # 更新日志
 见 [CHANGELOG](https://github.com/EAimTY/materiality-typecho-theme/blob/master/CHANGELOG.md)
