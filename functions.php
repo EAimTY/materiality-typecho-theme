@@ -216,10 +216,19 @@ function outputStart() {
   ob_start();
 }
 
-function outputEnd($pangu, $compressHTML) {
+function outputEnd($pangu, $compressHTML, $lazyLoad) {
   $output = ob_get_contents();
   ob_end_clean();
-  $output = preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $output);
+  if ($lazyLoad) {
+    $dom = new DOMDocument();
+    @$dom->loadHTML($output);
+    foreach ($dom->getElementsByTagName('img') as $node) {
+      $node->setAttribute("class", $node->getAttribute('class') . " lazyload");
+      $node->setAttribute("data-src", $node->getAttribute('src'));
+      $node->removeAttribute("src");
+    }
+    $output = $dom->saveHtml();
+  }
   if ($pangu || $compressHTML) {
     $output = preg_split('/(<nopangu.*?\/nopangu>|<pre.*?\/pre>|<code.*?\/code>|<textarea.*?\/textarea>|<div name="comment-author".*?\/div>)/msi', $output, NULL, PREG_SPLIT_DELIM_CAPTURE);
     foreach ($output as $key => $value) {
@@ -299,8 +308,9 @@ function themeConfig($cfg) {
     'autoDark' => _t('自动切换至暗色模式（20:00~7:00）'),
     'pangu' => _t('在中文、西文、数字间自动插入空格'),
     'compressHTML' => _t('启用 HTML 压缩（需要消耗一定性能，不建议在服务器性能低或网站 PV 高时开启）'),
+    'lazyLoad' => _t('延迟加载图片（在页面中其它内容加载完毕后再加载图片，能够优化多图片页面的加载速度）'),
     'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面滚动时轻微掉帧）')
-  ], ['autoDark', 'pangu', 'smoothScroll'], _t('主题功能设置'));
+  ], ['autoDark', 'smoothScroll'], _t('主题功能设置'));
   $cfg->addInput($feature->multiMode());
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', [
@@ -328,6 +338,17 @@ function themeConfig($cfg) {
     'comment_disabled' => _t('显示“评论已关闭”')
   ], ['author', 'category', 'comment_disabled'], _t('文章信息设置'));
   $cfg->addInput($article->multiMode());
+
+  $defaultGravatar = new Typecho_Widget_Helper_Form_Element_Select('defaultGravatar', [
+    'mp' => '神秘人',
+    '' => 'Gravatar Logo',
+    'identicon' => '随机的几何图案',
+    'monsterid' => '随机的小怪兽',
+    'wavatar' => '随机的卡通脸',
+    'retro' => '随机的像素图案',
+    'robohash' => '随机的小机器人'
+  ], 'mp', _t('评论者默认头像'), _t('在评论者没有设置过 Gravatar 时使用的头像'));
+  $cfg->addInput($defaultGravatar->multiMode());
 
   $primaryColor = new Typecho_Widget_Helper_Form_Element_Select('primaryColor', [
     'indigo' => 'Indigo',

@@ -13,11 +13,11 @@
 <div id="<?php $comments->theId(); ?>" class="mdui-card mdui-m-y-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
   <div id="<?php $comments->theId(); ?>-anchor" class="anchor"></div>
   <div class="mdui-card-header">
-    <div class="mdui-card-header-avatar"><img class="avatar lazyload" data-src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=monsterid" /></div>
+    <div class="mdui-card-header-avatar"><img class="avatar" src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=__DEFAULT__GRAVATAR__"></div>
     <div name="comment-author" class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
     <div class="mdui-card-header-subtitle"><?php $comments->date(); ?></div>
   </div>
-  <div class="mdui-card-content mdui-typo"><?php echo preg_replace('/<img src="(.*?)"(.*?)>/', '<img class="lazyload" data-src="$1"$2>', $comments->content); ?></div>
+  <div class="mdui-card-content mdui-typo"><?php $comments->content(); ?></div>
   <?php $comments->reply('<div class="mdui-card-actions" id="reply-' . $comments->theId . '"><button class="mdui-btn mdui-ripple mdui-text-color-theme-accent" onclick="replyComment(\'' . $comments->theId . '\')">回复</button></div>'); ?>
   <?php if ($comments->children): ?>
     <div class="mdui-container">
@@ -30,7 +30,11 @@
   <div class="mdui-hidden" id="respondid"><?php $this->respondId(); ?></div>
   <?php $this->comments()->to($comments); ?>
   <?php if ($comments->have()): ?>
+    <?php ob_start(); ?>
     <?php $comments->listComments(['before' => '', 'after' => '']); ?>
+    <?php $commentsHTML = ob_get_contents(); ?>
+    <?php ob_end_clean(); ?>
+    <?php echo str_replace('__DEFAULT__GRAVATAR__', $this->options->defaultGravatar, $commentsHTML); ?>
   <?php endif; ?>
   <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>">

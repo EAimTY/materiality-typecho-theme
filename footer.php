@@ -45,4 +45,4 @@
 </body>
 <?php $this->footer(); ?>
 </html>
-<?php outputEnd(in_array('pangu', $this->options->feature), in_array('compressHTML', $this->options->feature)); ?>
+<?php outputEnd(in_array('pangu', $this->options->feature), in_array('compressHTML', $this->options->feature), in_array('lazyLoad', $this->options->feature)); ?>

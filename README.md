@@ -10,7 +10,7 @@ https://github.com/EAimTY/materiality-typecho-theme
 - 严格遵循 Material Design
 - 样式简洁，专注于显示文字内容
 - Pjax 无刷新加载页面
-- 图片懒加载
+- 支持图片懒加载
 - 可自由切换主题颜色
 - 可手动或根据时间(20:00~7:00)自动切换暗色模式
 - 可在中文、西文、数字间自动插入空格
@@ -42,7 +42,7 @@ https://github.com/EAimTY/materiality-typecho-theme
 4. 清除浏览器缓存、CDN 缓存与网站 Cookies 以免与之前使用的主题发生冲突
 
 # 版本
-4.2
+4.3
 
 # 更新日志
 见 [CHANGELOG](https://github.com/EAimTY/materiality-typecho-theme/blob/master/CHANGELOG.md)

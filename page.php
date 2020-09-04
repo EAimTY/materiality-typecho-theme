@@ -3,12 +3,11 @@
 <div class="mdui-card mdui-m-y-3">
   <div class="mdui-card-primary">
     <div class="mdui-card-primary-title mdui-text-color-theme-accent"><?php $this->title(); ?></div>
-    <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
-      <?php $this->date(); ?>
-      <?php if (in_array('author', $this->options->article)): ?>
+    <?php if (in_array('author', $this->options->article)): ?>
+      <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
         <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
   </div>
   <div class="mdui-card-content mdui-typo">
     <?php if ($this->fields->index == "show"): ?>
