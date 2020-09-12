@@ -307,10 +307,11 @@ function themeConfig($cfg) {
   $feature = new Typecho_Widget_Helper_Form_Element_Checkbox('feature', [
     'autoDark' => _t('自动切换至暗色模式（20:00~7:00）'),
     'pangu' => _t('在中文、西文、数字间自动插入空格'),
+    'pjax' => _t('启用 Pjax 无刷新加载页面'),
     'compressHTML' => _t('启用 HTML 压缩（需要消耗一定性能，不建议在服务器性能低或网站 PV 高时开启）'),
     'lazyLoad' => _t('延迟加载图片（在页面中其它内容加载完毕后再加载图片，能够优化多图片页面的加载速度）'),
     'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面滚动时轻微掉帧）')
-  ], ['autoDark', 'smoothScroll'], _t('主题功能设置'));
+  ], ['autoDark', 'pjax', 'smoothScroll'], _t('主题功能设置'));
   $cfg->addInput($feature->multiMode());
 
   $appbar = new Typecho_Widget_Helper_Form_Element_Checkbox('appbar', [
@@ -340,14 +341,14 @@ function themeConfig($cfg) {
   $cfg->addInput($article->multiMode());
 
   $defaultGravatar = new Typecho_Widget_Helper_Form_Element_Select('defaultGravatar', [
-    'mp' => '神秘人',
     '' => 'Gravatar Logo',
+    'mp' => '神秘人',
     'identicon' => '随机的几何图案',
     'monsterid' => '随机的小怪兽',
     'wavatar' => '随机的卡通脸',
     'retro' => '随机的像素图案',
     'robohash' => '随机的小机器人'
-  ], 'mp', _t('评论者默认头像'), _t('在评论者没有设置过 Gravatar 时使用的头像'));
+  ], '', _t('评论者默认头像'), _t('在评论者没有设置过 Gravatar 时使用的头像'));
   $cfg->addInput($defaultGravatar->multiMode());
 
   $primaryColor = new Typecho_Widget_Helper_Form_Element_Select('primaryColor', [

@@ -15,8 +15,12 @@
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
+    <?php if (in_array('pjax', $this->options->feature)): ?>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>"></script>
+    <?php endif; ?>
+    <?php if (in_array('lazyLoad', $this->options->feature)): ?>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
+    <?php endif; ?>
     <?php if (in_array('smoothScroll', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
     <?php endif; ?>
@@ -199,9 +203,11 @@
         <?php endif; ?>
       </div>
     </div>
-    <div class="load-indicator mdui-shadow-2 mdui-valign">
-      <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
-    </div>
+    <?php if (in_array('pjax', $this->options->feature)): ?>
+      <div class="load-indicator mdui-shadow-2 mdui-valign">
+        <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
+      </div>
+    <?php endif; ?>
     <div class="page-content">
       <div class="translate-box"></div>
       <div class="mdui-container" id="main">
