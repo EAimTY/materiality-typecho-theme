@@ -10,10 +10,12 @@
     <?php endif; ?>
   </div>
   <div class="mdui-card-content mdui-typo">
+    <?php if (in_array('pangu', $this->options->feature)) echo "<pangu>"; ?>
     <?php if ($this->fields->index == "show"): ?>
       <?php getIndex(); ?>
     <?php endif; ?>
     <?php $this->content(); ?>
+    <?php if (in_array('pangu', $this->options->feature)) echo "</pangu>"; ?>
   </div>
 </div>
 <?php $this->need('comments.php'); ?>

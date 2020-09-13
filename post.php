@@ -15,10 +15,12 @@
   </div>
   <div class="mdui-card-content">
     <div class="mdui-typo">
+      <?php if (in_array('pangu', $this->options->feature)) echo "<pangu>"; ?>
       <?php if ($this->fields->index == "show"): ?>
         <?php getIndex(); ?>
       <?php endif; ?>
       <?php $this->content(); ?>
+      <?php if (in_array('pangu', $this->options->feature)) echo "</pangu>"; ?>
     </div>
     <?php if ($this->fields->tags == "show" && $this->tags): ?>
       <div class="mdui-divider"></div>

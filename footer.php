@@ -24,18 +24,14 @@
       </div>
     </div>
     <div class="footer-copyright mdui-col-xs-6 mdui-valign">
-      <div class="mdui-center">
-        <?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?>
-          Copyright &copy; <?php echo date("Y"); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
-        <?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?>
-      </div>
+      <div class="mdui-center">Copyright &copy; <?php echo date("Y"); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a></div>
     </div>
     <div class="footer-credit mdui-col-xs-3 mdui-valign">
       <div class="mdui-center">
         <div>Powered by <a href="http://typecho.org/" target="_blank">Typecho)))</a></div>
         <div>and Theme <a href="https://www.eaimty.com/theme.html" target="_blank">materiality</a></div>
         <?php if ($this->options->miibeian): ?>
-          <div><a href="http://www.beian.miit.gov.cn/" target="_blank"><?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?><?php $this->options->miibeian(); ?><?php if (in_array('pangu', $this->options->feature)) echo "</nopangu>"; ?></a></div>
+          <div><a href="http://www.beian.miit.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></div>
         <?php endif; ?>
       </div>
     </div>
@@ -45,4 +41,4 @@
 </body>
 <?php $this->footer(); ?>
 </html>
-<?php outputEnd(in_array('pangu', $this->options->feature), in_array('compressHTML', $this->options->feature), in_array('lazyLoad', $this->options->feature)); ?>
+<?php outputEnd(in_array('pangu', $this->options->feature), in_array('lazyLoad', $this->options->feature)); ?>

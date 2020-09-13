@@ -38,7 +38,6 @@
   <?php endif; ?>
   <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>">
-      <?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?>
       <div class="mdui-card mdui-m-y-3">
         <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
           <div class="mdui-card-header"><h2>添加新评论</h2></div>
@@ -80,7 +79,6 @@
           </div>
         </form>
       </div>
-      <?php if (in_array('pangu', $this->options->feature)) echo "<nopangu>"; ?>
     </div>
   <?php elseif (!$this->allow('comment') && in_array('comment_disabled', $this->options->article)): ?>
     <div class="mdui-chip mdui-m-b-2">

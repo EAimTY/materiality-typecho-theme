@@ -100,8 +100,7 @@ function getLinks($obj) {
   $links_arr = explode("\n", trim($obj));
   foreach ($links_arr as $link) {
     $link = explode("\", \"", substr(trim($link), 1, -1));
-    $link[1] = str_replace("'", "\\'", $link[1]);
-    $link[1] = str_replace("\"", "&quot;", $link[1]);
+    $link[1] = str_replace("\"", "&quot;", str_replace("'", "\\'", $link[1]));
     echo '<a class="mdui-list-item mdui-ripple" target="_blank" rel="external friend noopener" href="' . $link[2] . (($link[1]) ? '" mdui-tooltip="{content: \'' . $link[1] . '\'}">' : '">') . $link[0] . '</a>' . "\n";
   }
 }
@@ -192,31 +191,12 @@ function pangu($text) {
   return $text;
 }
 
-function compressHTML($html) {
-  $search = [
-    '/[\\n\\r\\t]+/',
-    '/\\s{2,}/',
-    '/>\\s</',
-    '/\\/\\*.*?\\*\\//i',
-    '/<!--[^!]*-->/'
-  ];
-  $replace = [
-    '',
-    ' ',
-    '><',
-    '',
-    ''
-  ];
-  $html = preg_replace($search, $replace, $html);
-  return $html;
-}
-
 function outputStart() {
   ob_end_clean();
   ob_start();
 }
 
-function outputEnd($pangu, $compressHTML, $lazyLoad) {
+function outputEnd($pangu, $lazyLoad) {
   $output = ob_get_contents();
   ob_end_clean();
   if ($lazyLoad) {
@@ -229,27 +209,25 @@ function outputEnd($pangu, $compressHTML, $lazyLoad) {
     }
     $output = $dom->saveHtml();
   }
-  if ($pangu || $compressHTML) {
-    $output = preg_split('/(<nopangu.*?\/nopangu>|<pre.*?\/pre>|<code.*?\/code>|<textarea.*?\/textarea>|<div name="comment-author".*?\/div>)/msi', $output, NULL, PREG_SPLIT_DELIM_CAPTURE);
-    foreach ($output as $key => $value) {
-      if (
-        substr_compare($value, '<pre', 0, 4) !== 0 &&
-        substr_compare($value, '<code', 0, 5) !== 0 &&
-        substr_compare($value, '<textarea', 0, 9) !== 0
-      ) {
-        if ($pangu) {
-          if (substr_compare($value, '<nopangu', 0, 8) === 0) {
-            $value = substr($value, 9, -10);
-          } elseif (substr_compare($value, '<div name="comment-author"', 0, 24) === 0) {
-          } else {
-            $value = pangu($value);
+  if ($pangu) {
+    $output = preg_split('/(<pangu.*?\/pangu>)/msi', $output, NULL, PREG_SPLIT_DELIM_CAPTURE);
+    foreach ($output as $splitKey => $splitValue) {
+      if (substr_compare($splitValue, '<pangu>', 0, 7) == 0) {
+        $splitValue = preg_split('/(<nopangu.*?\/nopangu>|<pre.*?\/pre>|<code.*?\/code>|<textarea.*?\/textarea>)/msi', substr($splitValue, 7, -8), NULL, PREG_SPLIT_DELIM_CAPTURE);
+        foreach ($splitValue as $exceptKey => $exceptValue) {
+          if (
+            substr_compare($value, '<nopangu', 0, 8) !== 0 &&
+            substr_compare($value, '<pre', 0, 4) !== 0 &&
+            substr_compare($value, '<code', 0, 5) !== 0 &&
+            substr_compare($value, '<textarea', 0, 9) !== 0
+          ) {
+            $exceptValue = pangu($exceptValue);
           }
+          $splitValue[$exceptKey] = $exceptValue;
         }
-        if ($compressHTML) {
-          $value = compressHTML($value);
-        }
-        $output[$key] = $value;
+        $splitValue = implode('', $splitValue);
       }
+      $output[$splitKey] = $splitValue;
     }
     $output = implode('', $output);
   }
@@ -306,9 +284,8 @@ function themeConfig($cfg) {
 
   $feature = new Typecho_Widget_Helper_Form_Element_Checkbox('feature', [
     'autoDark' => _t('自动切换至暗色模式（20:00~7:00）'),
-    'pangu' => _t('在中文、西文、数字间自动插入空格'),
+    'pangu' => _t('在文章内容中的中文与西文、中文与数字间自动插入空格'),
     'pjax' => _t('启用 Pjax 无刷新加载页面'),
-    'compressHTML' => _t('启用 HTML 压缩（需要消耗一定性能，不建议在服务器性能低或网站 PV 高时开启）'),
     'lazyLoad' => _t('延迟加载图片（在页面中其它内容加载完毕后再加载图片，能够优化多图片页面的加载速度）'),
     'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面滚动时轻微掉帧）')
   ], ['autoDark', 'pjax', 'smoothScroll'], _t('主题功能设置'));
