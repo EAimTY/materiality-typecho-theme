@@ -216,10 +216,10 @@ function outputEnd($pangu, $lazyLoad) {
         $splitValue = preg_split('/(<nopangu.*?\/nopangu>|<pre.*?\/pre>|<code.*?\/code>|<textarea.*?\/textarea>)/msi', substr($splitValue, 7, -8), NULL, PREG_SPLIT_DELIM_CAPTURE);
         foreach ($splitValue as $exceptKey => $exceptValue) {
           if (
-            substr_compare($value, '<nopangu', 0, 8) !== 0 &&
-            substr_compare($value, '<pre', 0, 4) !== 0 &&
-            substr_compare($value, '<code', 0, 5) !== 0 &&
-            substr_compare($value, '<textarea', 0, 9) !== 0
+            substr_compare($exceptValue, '<nopangu', 0, 8) !== 0 &&
+            substr_compare($exceptValue, '<pre', 0, 4) !== 0 &&
+            substr_compare($exceptValue, '<code', 0, 5) !== 0 &&
+            substr_compare($exceptValue, '<textarea', 0, 9) !== 0
           ) {
             $exceptValue = pangu($exceptValue);
           }
