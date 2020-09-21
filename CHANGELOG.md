@@ -1,3 +1,6 @@
+## 4.5.2
+- 异步加载 JavaScript
+- 修复 drawer 与 footer 的动画
 ## 4.5.1
 - 修复开启 pangu 后的 502 错误
 ## 4.5

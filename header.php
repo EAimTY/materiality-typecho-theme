@@ -14,22 +14,22 @@
     <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo getColor($this->options->primaryColor); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>" defer></script>
     <?php if (in_array('pjax', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>" defer></script>
     <?php endif; ?>
     <?php if (in_array('lazyLoad', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>" defer></script>
     <?php endif; ?>
     <?php if (in_array('smoothScroll', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>" defer></script>
     <?php endif; ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>" defer></script>
     <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>" defer></script>
     <?php endif; ?>
     <?php if (in_array('autoDark', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/autodark.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/autodark.min.js'); ?>" defer></script>
     <?php endif; ?>
     <?php if ($this->options->avatar): ?>
       <link rel="Shortcut Icon" href="<?php $this->options->avatar(); ?>" />
