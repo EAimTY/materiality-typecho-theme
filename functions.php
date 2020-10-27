@@ -1,12 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-function storeColor($colorCode) {
-  if (!isset($_COOKIE["themeColor"])) {
-    setcookie("themeColor", $colorCode, time() + 604800);
-  }
-}
-
 function getColor($color) {
   $code = [
     'indigo'      => '3F51B5',
@@ -32,11 +26,18 @@ function getColor($color) {
   return $code[$color];
 }
 
-function isDarkMode() {
-  if ($_COOKIE["darkMode"] == "on") {
-    return 1;
+function darkInit($autoDark, $color) {
+  setcookie("THEME_COLOR", $color, time() + 604800, "/");
+  if ($autoDark) {
+    setcookie("AUTO_DARK", "1", time() + 604800, "/");
   } else {
-    return 0;
+    setcookie("AUTO_DARK", "", time() - 604800, "/");
+  }
+  if (!isset($_COOKIE["DARK_EXPIRE"])) {
+    setcookie("DARK_EXPIRE", "0", time() + 604800, "/");
+  }
+  if ($_COOKIE["DARK_STATUS"]) {
+    $GLOBALS["dark"] = 1;
   }
 }
 

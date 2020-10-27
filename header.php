@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
-  <?php storeColor(getColor($this->options->primaryColor)); ?>
+  <?php darkInit(in_array('autoDark', $this->options->feature), getColor($this->options->primaryColor)); ?>
 <?php endif; ?>
 <?php outputStart(); ?>
 <!DOCTYPE html>
@@ -10,8 +10,8 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="renderer" content="webkit" />
     <meta charset="<?php $this->options->charset(); ?>" />
-    <meta id="color_chrome" name="theme-color" content="#<?php echo getColor($this->options->primaryColor); ?>" />
-    <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo getColor($this->options->primaryColor); ?>" />
+    <meta id="color_chrome" name="theme-color" content="#<?php echo $GLOBALS["dark"] ? "212121" : getColor($this->options->primaryColor); ?>" />
+    <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo $GLOBALS["dark"] ? "212121" : getColor($this->options->primaryColor); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>" defer></script>
@@ -28,9 +28,6 @@
     <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>" defer></script>
     <?php endif; ?>
-    <?php if (in_array('autoDark', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/autodark.min.js'); ?>" defer></script>
-    <?php endif; ?>
     <?php if ($this->options->avatar): ?>
       <link rel="Shortcut Icon" href="<?php $this->options->avatar(); ?>" />
       <link rel="Bootmark" href="<?php $this->options->avatar(); ?>" />
@@ -43,14 +40,14 @@
         'author'   => _t('%s 发布的文章')
       ], '', ' - '); ?><?php $this->options->title(); ?></title>
   </head>
-  <body class="<?php if (!in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?><?php if (isDarkMode() && (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature))): ?> mdui-theme-layout-dark<?php endif; ?>">
+  <body class="<?php if (!in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?><?php if ($GLOBALS["dark"]): ?> mdui-theme-layout-dark<?php endif; ?>">
     <header class="mdui-appbar mdui-appbar-fixed">
       <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
         <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
         <div class="mdui-toolbar-spacer"></div>
         <?php if (in_array('darkToggle', $this->options->appbar)): ?>
-          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="darktoggle_btn" mdui-tooltip="{content: '切换为暗色模式'}" onclick="darkToggle()"><i class="mdui-icon materiality-icons" id="darktoggle_icon">&#xe901;</i></span>
+          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '<?php echo $GLOBALS["dark"] ? "切换为亮色模式" : "切换为暗色模式"; ?>'}" onclick="toggleDark()"><i class="mdui-icon materiality-icons" id="dark_toggle_icon">&#xe901;</i></span>
         <?php endif; ?>
         <?php if (in_array('rss', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe903;</i></span>
@@ -202,7 +199,7 @@
       </div>
     </div>
     <?php if (in_array('pjax', $this->options->feature)): ?>
-      <div class="load-indicator mdui-shadow-2 mdui-valign">
+      <div class="load-indicator mdui-shadow-2 mdui-valign<?php if ($GLOBALS["dark"]): ?> load-indicator-dark<?php endif; ?>">
         <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
       </div>
     <?php endif; ?>
