@@ -17,7 +17,7 @@
     <?php if (in_array('highlight', $this->options->feature)): ?>
       <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/highlight.min.css'); ?>" />
     <?php endif; ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>" defer></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
     <?php if (in_array('pjax', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>" defer></script>
     <?php endif; ?>

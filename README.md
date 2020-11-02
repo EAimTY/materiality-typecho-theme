@@ -38,8 +38,7 @@ https://github.com/EAimTY/materiality-typecho-theme
 
 ## 配置代码高亮
 
-代码高亮通过 [highlight.js](https://github.com/highlightjs/highlight.js) 实现，可以自动识别代码语言并着色，可在后台主题设置页面开启
-由于每个博客需要代码高亮的语言都不相同，如果在构建时包含所有语言，脚本体积将会非常大，严重影响用户体验
+代码高亮通过 [highlight.js](https://github.com/highlightjs/highlight.js) 实现，可以自动识别代码语言并着色，可在后台主题设置页面开启。由于每个博客需要代码高亮的语言都不相同，如果在构建时包含所有语言，脚本体积将会非常大，严重影响用户体验
 
 请进入 [highlight.js 自定义构建下载](https://highlightjs.org/download/) 页面，在 Custom package 节选择所需的语言支持，将下载到的 zip 文件中的`highlight.pack.js`文件重命名为`highlight.min.js`，并替换`主题目录/assets/js/highlight.min.js`
 
@@ -67,7 +66,7 @@ highlight.js 支持多种颜色主题，默认为 `atom-one-light`，如需自�
 
 # 版本
 
-4.8
+4.8.1
 
 # 更新日志
 

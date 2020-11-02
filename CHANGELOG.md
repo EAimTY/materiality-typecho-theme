@@ -1,7 +1,8 @@
+## 4.8.1
+- 更新 MDUI 版本
+- 不再异步加载`mdui.min.js`以优化页面加载时的效果
 ## 4.8
-- 加入代码高亮功能，请参照 [配置代码高亮
-](https://github.com/EAimTY/materiality-typecho-theme#配置代码高亮
-) 使用
+- 加入代码高亮功能，请参照 [配置代码高亮](https://github.com/EAimTY/materiality-typecho-theme#配置代码高亮) 使用
 - 优化自动暗色模式切换逻辑
 - bug 修复
 - 更新 README
