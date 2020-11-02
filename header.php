@@ -14,6 +14,9 @@
     <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo $GLOBALS["dark"] ? "212121" : getColor($this->options->primaryColor); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
+    <?php if (in_array('highlight', $this->options->feature)): ?>
+      <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/highlight.min.css'); ?>" />
+    <?php endif; ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>" defer></script>
     <?php if (in_array('pjax', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>" defer></script>
@@ -23,6 +26,9 @@
     <?php endif; ?>
     <?php if (in_array('smoothScroll', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>" defer></script>
+    <?php endif; ?>
+    <?php if (in_array('highlight', $this->options->feature)): ?>
+      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.min.js'); ?>" defer></script>
     <?php endif; ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>" defer></script>
     <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>

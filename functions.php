@@ -296,6 +296,7 @@ function themeConfig($cfg) {
     'pangu' => _t('在文章内容中的中文与西文、中文与数字间自动插入空格'),
     'pjax' => _t('启用 Pjax 无刷新加载页面'),
     'lazyLoad' => _t('延迟加载图片（在页面中其它内容加载完毕后再加载图片，能够优化多图片页面的加载速度）'),
+    'highlight' => _t('启用代码高亮着色，请务必参阅 <a href="https://github.com/EAimTY/materiality-typecho-theme#配置代码高亮">配置代码高亮</a>'),
     'smoothScroll' => _t('启用惯性滚动（将改善页面滚动时的体验，但可能会造成页面滚动时轻微掉帧）')
   ], ['autoDark', 'pjax', 'smoothScroll'], _t('主题功能设置'));
   $cfg->addInput($feature->multiMode());
