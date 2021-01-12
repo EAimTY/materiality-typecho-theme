@@ -46,7 +46,7 @@
         'author'   => _t('%s 发布的文章')
       ], '', ' - '); ?><?php $this->options->title(); ?></title>
   </head>
-  <body class="<?php if (!in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?><?php if ($GLOBALS["dark"]): ?> mdui-theme-layout-dark<?php endif; ?>">
+  <body class="<?php if (!in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?><?php if (isset($GLOBALS["dark"])): ?> mdui-theme-layout-dark<?php endif; ?>">
     <header class="mdui-appbar mdui-appbar-fixed">
       <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
@@ -205,7 +205,7 @@
       </div>
     </div>
     <?php if (in_array('pjax', $this->options->feature)): ?>
-      <div class="load-indicator mdui-shadow-2 mdui-valign<?php if ($GLOBALS["dark"]): ?> load-indicator-dark<?php endif; ?>">
+      <div class="load-indicator mdui-shadow-2 mdui-valign<?php if (isset($GLOBALS["dark"])): ?> load-indicator-dark<?php endif; ?>">
         <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
       </div>
     <?php endif; ?>

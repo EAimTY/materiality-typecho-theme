@@ -57,7 +57,7 @@ function getIndex() {
     $current = 0;
     foreach ($GLOBALS["index"] as $item) {
       $indexDepth = $item["depth"];
-      if ($parent) {
+      if (isset($parent)) {
         if ($indexDepth == $parent) {
           $index .= '</li>' . "\n";
         } elseif ($indexDepth > $parent) {

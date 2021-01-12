@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
   </div>
-  <footer<?php if ($GLOBALS["dark"]): ?> class="mdui-color-theme"<?php endif; ?>>
+  <footer<?php if (isset($GLOBALS["dark"])): ?> class="mdui-color-theme"<?php endif; ?>>
     <div class="footer-icons mdui-col-xs-3 mdui-valign">
       <div class="mdui-center">
         <?php if ($this->options->email): ?>
