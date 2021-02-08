@@ -29,6 +29,8 @@ https://github.com/EAimTY/materiality-typecho-theme
 
 ## 安装与更新主题
 
+**本主题在 Typecho 当前正式稳定版本（1.1）下开发并测试，使用需 PHP 7.0+**
+
 从其它主题更换为本主题，或从本主题较旧版本更新至新版本时，可能会出现显示 bug，这是由于浏览器与 CDN（如果有）的缓存没有更新。所以请在更换或更新主题后清除浏览器与 CDN 缓存以得到最佳显示效果
 
 1. 前往 [Releases页](https://github.com/EAimTY/materiality-typecho-theme/releases) 下载或使用 Git 克隆主题至`usr/themes/`下
@@ -66,7 +68,7 @@ highlight.js 支持多种颜色主题，默认为 `atom-one-light`，如需自�
 
 # 版本
 
-4.8.2
+4.8.3
 
 # 更新日志
 

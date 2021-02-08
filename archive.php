@@ -41,7 +41,8 @@
     </div>
   </div>
 <?php endif; ?>
-<div class="mdui-m-y-3" id="page-nav">
+<?php ob_start(); ?>
+<div class="mdui-m-y-3 page-nav">
   <?php $this->pageNav('&#xe913;', '&#xe914;', 2, '...', [
     'itemTag'      => '',
     'textTag'      => 'div class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-tooltip="{content: \'共有' . ceil($this->getTotal()) . '篇文章\'}"',
@@ -52,4 +53,7 @@
     'wrapClass'    => 'mdui-btn-group'
   ]); ?>
 </div>
+<?php $pageNavHTML = ob_get_contents(); ?>
+<?php ob_end_clean(); ?>
+<?php getPageNav($pageNavHTML); ?>
 <?php $this->need('footer.php'); ?>

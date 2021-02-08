@@ -10,8 +10,8 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="renderer" content="webkit" />
     <meta charset="<?php $this->options->charset(); ?>" />
-    <meta id="color_chrome" name="theme-color" content="#<?php echo $GLOBALS["dark"] ? "212121" : getColor($this->options->primaryColor); ?>" />
-    <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo $GLOBALS["dark"] ? "212121" : getColor($this->options->primaryColor); ?>" />
+    <meta id="color_chrome" name="theme-color" content="#<?php echo isset($GLOBALS["dark"]) ? "212121" : getColor($this->options->primaryColor); ?>" />
+    <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo isset($GLOBALS["dark"]) ? "212121" : getColor($this->options->primaryColor); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
     <?php if (in_array('highlight', $this->options->feature)): ?>
@@ -53,7 +53,7 @@
         <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
         <div class="mdui-toolbar-spacer"></div>
         <?php if (in_array('darkToggle', $this->options->appbar)): ?>
-          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '<?php echo $GLOBALS["dark"] ? "切换为亮色模式" : "切换为暗色模式"; ?>'}" onclick="toggleDark()"><i class="mdui-icon materiality-icons" id="dark_toggle_icon">&#xe901;</i></span>
+          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '<?php echo isset($GLOBALS["dark"]) ? "切换为亮色模式" : "切换为暗色模式"; ?>'}" onclick="toggleDark()"><i class="mdui-icon materiality-icons" id="dark_toggle_icon">&#xe901;</i></span>
         <?php endif; ?>
         <?php if (in_array('rss', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe903;</i></span>

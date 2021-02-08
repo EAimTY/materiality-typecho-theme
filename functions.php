@@ -36,7 +36,7 @@ function darkInit($autoDark, $color) {
   if (!isset($_COOKIE["DARK_EXPIRE"])) {
     setcookie("DARK_EXPIRE", "0", time() + 604800, "/");
   }
-  if ($_COOKIE["DARK_STATUS"]) {
+  if ($_COOKIE["DARK_STATUS"] ?? 0) {
     $GLOBALS["dark"] = 1;
   }
 }
@@ -200,6 +200,15 @@ function pangu($text) {
   return $text;
 }
 
+function getPageNav($pageNavHTML) {
+  $pageNavDOM = new DOMDocument();
+  @$pageNavDOM->loadHTML($pageNavHTML);
+  foreach ($pageNavDOM->getElementsByTagName('a') as $node) {
+    $node->setAttribute("class", ($node->getAttribute('class') ? ($node->getAttribute('class') . " ") : "") . "mdui-btn mdui-ripple mdui-text-color-theme-accent");
+  }
+  echo $pageNavDOM->saveHtml();
+}
+
 function outputStart() {
   ob_end_clean();
   ob_start();
@@ -212,7 +221,7 @@ function outputEnd($pangu, $lazyLoad) {
     $dom = new DOMDocument();
     @$dom->loadHTML($output);
     foreach ($dom->getElementsByTagName('img') as $node) {
-      $node->setAttribute("class", $node->getAttribute('class') . " lazyload");
+      $node->setAttribute("class", ($node->getAttribute('class') ? ($node->getAttribute('class') . " ") : "") . "lazyload");
       $node->setAttribute("data-src", $node->getAttribute('src'));
       $node->removeAttribute("src");
     }
