@@ -200,11 +200,15 @@ function pangu($text) {
   return $text;
 }
 
-function getPageNav($pageNavHTML) {
+function getPageNav($pageNavHTML, $total) {
   $pageNavDOM = new DOMDocument();
   @$pageNavDOM->loadHTML($pageNavHTML);
   foreach ($pageNavDOM->getElementsByTagName('a') as $node) {
     $node->setAttribute("class", ($node->getAttribute('class') ? ($node->getAttribute('class') . " ") : "") . "mdui-btn mdui-ripple mdui-text-color-theme-accent");
+  }
+  foreach ($pageNavDOM->getElementsByTagName('span') as $node) {
+    $node->setAttribute("class", "mdui-btn mdui-ripple mdui-text-color-theme-accent");
+    $node->setAttribute("mdui-tooltip", "{content: '共有 " . $total . " 篇文章'}");
   }
   echo $pageNavDOM->saveHtml();
 }

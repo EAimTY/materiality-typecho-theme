@@ -4,7 +4,7 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 4.8.3
+ * @version 4.8.4
  * @link https://www.eaimty.com/
  */
 ?>
@@ -35,7 +35,7 @@
 <div class="mdui-m-y-3 page-nav">
   <?php $this->pageNav('&#xe913;', '&#xe914;', 2, '...', [
     'itemTag'      => '',
-    'textTag'      => 'div class="mdui-btn mdui-ripple mdui-text-color-theme-accent" mdui-tooltip="{content: \'共有' . ceil($this->getTotal()) . '篇文章\'}"',
+    'textTag'      => 'span',
     'currentClass' => 'mdui-btn-active',
     'prevClass'    => 'mdui-icon materiality-icons',
     'nextClass'    => 'mdui-icon materiality-icons',
@@ -45,5 +45,5 @@
 </div>
 <?php $pageNavHTML = ob_get_contents(); ?>
 <?php ob_end_clean(); ?>
-<?php getPageNav($pageNavHTML); ?>
+<?php getPageNav($pageNavHTML, ceil($this->getTotal())); ?>
 <?php $this->need('footer.php'); ?>
