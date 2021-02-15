@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
-  <?php darkInit(in_array('autoDark', $this->options->feature), getColor($this->options->primaryColor)); ?>
+<?php if ((!empty($this->options->appbar) && in_array('darkToggle', $this->options->appbar)) || (!empty($this->options->feature) && in_array('autoDark', $this->options->feature))): ?>
+  <?php darkInit(!empty($this->options->feature) && in_array('autoDark', $this->options->feature), getColor($this->options->primaryColor)); ?>
 <?php endif; ?>
 <?php outputStart(); ?>
 <!DOCTYPE html>
@@ -14,24 +14,24 @@
     <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo isset($GLOBALS["dark"]) ? "212121" : getColor($this->options->primaryColor); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
-    <?php if (in_array('highlight', $this->options->feature)): ?>
+    <?php if (!empty($this->options->feature) && in_array('highlight', $this->options->feature)): ?>
       <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/highlight.min.css'); ?>" />
     <?php endif; ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
-    <?php if (in_array('pjax', $this->options->feature)): ?>
+    <?php if (!empty($this->options->feature) && in_array('pjax', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>" defer></script>
     <?php endif; ?>
-    <?php if (in_array('lazyLoad', $this->options->feature)): ?>
+    <?php if (!empty($this->options->feature) && in_array('lazyLoad', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>" defer></script>
     <?php endif; ?>
-    <?php if (in_array('smoothScroll', $this->options->feature)): ?>
+    <?php if (!empty($this->options->feature) && in_array('smoothScroll', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>" defer></script>
     <?php endif; ?>
-    <?php if (in_array('highlight', $this->options->feature)): ?>
+    <?php if (!empty($this->options->feature) && in_array('highlight', $this->options->feature)): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.min.js'); ?>" defer></script>
     <?php endif; ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>" defer></script>
-    <?php if (in_array('darkToggle', $this->options->appbar) || in_array('autoDark', $this->options->feature)): ?>
+    <?php if ((!empty($this->options->appbar) && in_array('darkToggle', $this->options->appbar)) || (!empty($this->options->feature) && in_array('autoDark', $this->options->feature))): ?>
       <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>" defer></script>
     <?php endif; ?>
     <?php if ($this->options->avatar): ?>
@@ -46,16 +46,16 @@
         'author'   => _t('%s 发布的文章')
       ], '', ' - '); ?><?php $this->options->title(); ?></title>
   </head>
-  <body class="<?php if (!in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?><?php if (isset($GLOBALS["dark"])): ?> mdui-theme-layout-dark<?php endif; ?>">
+  <body class="<?php if (empty($this->options->drawer) || !in_array('hidden', $this->options->drawer)): ?>mdui-drawer-body-left <?php endif; ?> mdui-appbar-with-toolbar mdui-theme-primary-<?php $this->options->primaryColor(); ?> mdui-theme-accent-<?php $this->options->accentColor(); ?><?php if (isset($GLOBALS["dark"])): ?> mdui-theme-layout-dark<?php endif; ?>">
     <header class="mdui-appbar mdui-appbar-fixed">
       <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#drawer', swipe: true}"><i class="mdui-icon materiality-icons">&#xe900;</i></span>
         <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
         <div class="mdui-toolbar-spacer"></div>
-        <?php if (in_array('darkToggle', $this->options->appbar)): ?>
+        <?php if (!empty($this->options->appbar) && in_array('darkToggle', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '<?php echo isset($GLOBALS["dark"]) ? "切换为亮色模式" : "切换为暗色模式"; ?>'}" onclick="toggleDark()"><i class="mdui-icon materiality-icons" id="dark_toggle_icon">&#xe901;</i></span>
         <?php endif; ?>
-        <?php if (in_array('rss', $this->options->appbar)): ?>
+        <?php if (!empty($this->options->appbar) && in_array('rss', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe903;</i></span>
           <ul class="mdui-menu" id="rss">
             <li class="mdui-menu-item">
@@ -66,7 +66,7 @@
             </li>
           </ul>
         <?php endif; ?>
-        <?php if (in_array('admin', $this->options->appbar)): ?>
+        <?php if (!empty($this->options->appbar) && in_array('admin', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '管理后台'}" mdui-menu="{target: '#admin-menu'}"><i class="mdui-icon materiality-icons">&#xe904;</i></span>
           <ul class="mdui-menu" id="admin-menu">
             <?php if ($this->user->hasLogin()): ?>
@@ -86,20 +86,20 @@
         <?php endif; ?>
       </div>
     </header>
-    <div class="mdui-drawer<?php if (in_array('hidden', $this->options->drawer)): ?> mdui-drawer-close<?php endif; ?>" id="drawer">
+    <div class="mdui-drawer<?php if (!empty($this->options->drawer) && in_array('hidden', $this->options->drawer)): ?> mdui-drawer-close<?php endif; ?>" id="drawer">
       <div class="billboard">
         <a href="<?php $this->options->siteUrl(); ?>" class="logo mdui-m-y-2 mdui-m-l-2" style="background:url('<?php $this->options->avatar(); ?>');background-size:contain"></a>
         <div class="description mdui-m-x-2 mdui-text-color-white-text mdui-valign"><?php $this->options->description(); ?></div>
       </div>
       <div class="mdui-list" mdui-collapse="{accordion: true}">
-        <?php if (in_array('search', $this->options->drawer)): ?>
+        <?php if (!empty($this->options->drawer) && in_array('search', $this->options->drawer)): ?>
           <form class="mdui-p-t-0 mdui-m-x-2 mdui-textfield mdui-textfield-floating-label" method="post">
             <label class="mdui-textfield-label">搜索</label>
             <input class="mdui-textfield-input" type="text" autocomplete="new-password" name="s" />
           </form>
           <div class="mdui-divider"></div>
         <?php endif; ?>
-        <?php if (in_array('home', $this->options->drawer)): ?>
+        <?php if (!empty($this->options->drawer) && in_array('home', $this->options->drawer)): ?>
           <a href="<?php $this->options->siteUrl(); ?>" class="mdui-list-item mdui-ripple" id="home-url">
             <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe905;</i>
             <div class="mdui-list-item-content mdui-m-r-4">首页</div>
@@ -116,7 +116,7 @@
           <div class="mdui-divider"></div>
         <?php endif; ?>
         <?php $this->widget('Widget_Metas_Category_List')->to($categories); ?>
-        <?php if ($categories->have() && in_array('categories', $this->options->drawer)): ?>
+        <?php if ($categories->have() && !empty($this->options->drawer) && in_array('categories', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
               <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe907;</i>
@@ -131,7 +131,7 @@
           </div>
         <?php endif; ?>
         <?php $this->widget('Widget_Contents_Post_Recent')->to($posts); ?>
-        <?php if ($posts->have() && in_array('posts', $this->options->drawer)): ?>
+        <?php if ($posts->have() && !empty($this->options->drawer) && in_array('posts', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
               <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe908;</i>
@@ -146,7 +146,7 @@
           </div>
         <?php endif; ?>
         <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
-        <?php if ($comments->have() && in_array('comments', $this->options->drawer)): ?>
+        <?php if ($comments->have() && !empty($this->options->drawer) && in_array('comments', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
               <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe909;</i>
@@ -161,7 +161,7 @@
           </div>
         <?php endif; ?>
         <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=F Y')->to($archives); ?>
-        <?php if ($archives->have() && in_array('archives', $this->options->drawer)): ?>
+        <?php if ($archives->have() && !empty($this->options->drawer) && in_array('archives', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
               <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90a;</i>
@@ -176,7 +176,7 @@
           </div>
         <?php endif; ?>
         <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=10')->to($tags); ?>
-        <?php if ($tags->have() && in_array('tags', $this->options->drawer)): ?>
+        <?php if ($tags->have() && !empty($this->options->drawer) && in_array('tags', $this->options->drawer)): ?>
           <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
               <i class="mdui-list-item-icon mdui-icon materiality-icons">&#xe90b;</i>
@@ -204,7 +204,7 @@
         <?php endif; ?>
       </div>
     </div>
-    <?php if (in_array('pjax', $this->options->feature)): ?>
+    <?php if (!empty($this->options->feature) && in_array('pjax', $this->options->feature)): ?>
       <div class="load-indicator mdui-shadow-2 mdui-valign<?php if (isset($GLOBALS["dark"])): ?> load-indicator-dark<?php endif; ?>">
         <div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>
       </div>

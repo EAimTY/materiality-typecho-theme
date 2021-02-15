@@ -4,7 +4,7 @@
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 4.8.4
+ * @version 4.8.5
  * @link https://www.eaimty.com/
  */
 ?>
@@ -17,15 +17,15 @@
       <div class="mdui-card-primary-title"><a class="mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a></div>
       <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
         <?php $this->date(); ?>
-        <?php if (in_array('author', $this->options->article)): ?>
+        <?php if (!empty($this->options->article) && in_array('author', $this->options->article)): ?>
           <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
         <?php endif; ?>
-        <?php if ($this->category && in_array('category', $this->options->article)): ?>
+        <?php if ($this->category && !empty($this->options->article) && in_array('category', $this->options->article)): ?>
           <span> | </span><i class="mdui-icon materiality-icons">&#xe907;</i><?php $this->category(', '); ?>
         <?php endif; ?>
       </div>
     </div>
-    <div class="mdui-card-content mdui-typo"><?php if (in_array('pangu', $this->options->feature)) echo "<pangu>"; ?><?php $this->content(); ?><?php if (in_array('pangu', $this->options->feature)) echo "</pangu>"; ?></div>
+    <div class="mdui-card-content mdui-typo"><?php if (!empty($this->options->feature) && in_array('pangu', $this->options->feature)) echo "<pangu>"; ?><?php $this->content(); ?><?php if (!empty($this->options->feature) && in_array('pangu', $this->options->feature)) echo "</pangu>"; ?></div>
     <div class="mdui-card-actions">
       <a class="mdui-btn mdui-ripple mdui-text-color-theme-accent" href="<?php $this->permalink(); ?>">继续阅读</a>
     </div>

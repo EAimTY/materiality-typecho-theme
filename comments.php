@@ -80,7 +80,7 @@
         </form>
       </div>
     </div>
-  <?php elseif (!$this->allow('comment') && in_array('comment_disabled', $this->options->article)): ?>
+  <?php elseif (!$this->allow('comment') && !empty($this->options->article) && in_array('comment_disabled', $this->options->article)): ?>
     <div class="mdui-chip mdui-m-b-2">
       <span class="mdui-chip-icon"><i class="mdui-icon materiality-icons">&#xe90f;</i></span>
       <span class="mdui-chip-title">评论已关闭</span>
