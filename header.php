@@ -53,7 +53,7 @@
         <a href="<?php $this->options->siteUrl(); ?>" class="mdui-typo-headline"><?php $this->options->title(); ?></a>
         <div class="mdui-toolbar-spacer"></div>
         <?php if (!empty($this->options->appbar) && in_array('darkToggle', $this->options->appbar)): ?>
-          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '<?php echo isset($GLOBALS["dark"]) ? "切换为亮色模式" : "切换为暗色模式"; ?>'}" onclick="toggleDark()"><i class="mdui-icon materiality-icons" id="dark_toggle_icon">&#xe901;</i></span>
+          <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '<?php echo isset($GLOBALS["dark"]) ? "切换为亮色模式" : "切换为暗色模式"; ?>'}" onclick="toggle()"><i class="mdui-icon materiality-icons" id="dark_toggle_icon">&#xe901;</i></span>
         <?php endif; ?>
         <?php if (!empty($this->options->appbar) && in_array('rss', $this->options->appbar)): ?>
           <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'RSS'}" mdui-menu="{target: '#rss'}"><i class="mdui-icon materiality-icons">&#xe903;</i></span>
