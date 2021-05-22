@@ -28,7 +28,7 @@
       <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/smoothscroll.min.js" defer></script>
     <?php endif; ?>
     <?php if (!empty($this->options->feature) && in_array('highlight', $this->options->feature)): ?>
-      <script type="text/javascript" src="https//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
     <?php endif; ?>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/materiality.min.js" defer></script>
     <?php if ((!empty($this->options->appbar) && in_array('darkToggle', $this->options->appbar)) || (!empty($this->options->feature) && in_array('autoDark', $this->options->feature))): ?>
