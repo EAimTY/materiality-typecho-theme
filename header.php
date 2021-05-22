@@ -12,27 +12,27 @@
     <meta charset="<?php $this->options->charset(); ?>" />
     <meta id="color_chrome" name="theme-color" content="#<?php echo isset($GLOBALS["dark"]) ? "212121" : getColor($this->options->primaryColor); ?>" />
     <meta id="color_safari" name="apple-mobile-web-app-status-bar-style" content="#<?php echo isset($GLOBALS["dark"]) ? "212121" : getColor($this->options->primaryColor); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/mdui.min.css'); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/materiality.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/css/mdui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/css/materiality.min.css" />
     <?php if (!empty($this->options->feature) && in_array('highlight', $this->options->feature)): ?>
-      <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('assets/css/highlight.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css">
     <?php endif; ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/mdui.min.js'); ?>"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/mdui.min.js"></script>
     <?php if (!empty($this->options->feature) && in_array('pjax', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/pjax.min.js'); ?>" defer></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/pjax.min.js" defer></script>
     <?php endif; ?>
     <?php if (!empty($this->options->feature) && in_array('lazyLoad', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/lazysizes.min.js'); ?>" defer></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/lazysizes.min.js" defer></script>
     <?php endif; ?>
     <?php if (!empty($this->options->feature) && in_array('smoothScroll', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/smoothscroll.min.js'); ?>" defer></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/smoothscroll.min.js" defer></script>
     <?php endif; ?>
     <?php if (!empty($this->options->feature) && in_array('highlight', $this->options->feature)): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.min.js'); ?>" defer></script>
+      <script type="text/javascript" src="https//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
     <?php endif; ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/materiality.min.js'); ?>" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/materiality.min.js" defer></script>
     <?php if ((!empty($this->options->appbar) && in_array('darkToggle', $this->options->appbar)) || (!empty($this->options->feature) && in_array('autoDark', $this->options->feature))): ?>
-      <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/darkmode.min.js'); ?>" defer></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/EAimTY/materiality-typecho-theme@master/assets/js/darkmode.min.js" defer></script>
     <?php endif; ?>
     <?php if ($this->options->avatar): ?>
       <link rel="Shortcut Icon" href="<?php $this->options->avatar(); ?>" />
