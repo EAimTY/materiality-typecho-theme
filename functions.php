@@ -202,7 +202,7 @@ function pangu($text) {
 
 function getPageNav($pageNavHTML, $total) {
   $pageNavDOM = new DOMDocument();
-  @$pageNavDOM->loadHTML($pageNavHTML);
+  @$pageNavDOM->loadHTML($pageNavHTML, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
   foreach ($pageNavDOM->getElementsByTagName('a') as $node) {
     $node->setAttribute("class", ($node->getAttribute('class') ? ($node->getAttribute('class') . " ") : "") . "mdui-btn mdui-ripple mdui-text-color-theme-accent");
   }
@@ -223,7 +223,7 @@ function outputEnd($pangu, $lazyLoad) {
   ob_end_clean();
   if ($lazyLoad) {
     $dom = new DOMDocument();
-    @$dom->loadHTML($output);
+    @$dom->loadHTML($output, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
     foreach ($dom->getElementsByTagName('img') as $node) {
       $node->setAttribute("class", ($node->getAttribute('class') ? ($node->getAttribute('class') . " ") : "") . "lazyload");
       $node->setAttribute("data-src", $node->getAttribute('src'));
@@ -270,7 +270,9 @@ function themeFields($layout) {
     $layout->addItem($index);
     $tags = new Typecho_Widget_Helper_Form_Element_Select('tags', ['show' => '显示', 'hide' => '不显示'], 'show', _t('显示标签'), _t('是否在文章底部显示标签？'));
     $layout->addItem($tags);
-  } else {
+  } else if (strpos($_SERVER["PHP_SELF"], "write-page.php") !== false) {
+    $date = new Typecho_Widget_Helper_Form_Element_Select('date', ['show' => '显示', 'hide' => '不显示'], 'show', _t('显示页面创建日期'), _t('是否显示页面创建日期？'));
+    $layout->addItem($date);
     $index = new Typecho_Widget_Helper_Form_Element_Select('index', ['show' => '显示', 'hide' => '不显示'], 'show', _t('显示目录'), _t('是否在页面顶部显示目录？'));
     $layout->addItem($index);
   }

@@ -3,9 +3,15 @@
 <div class="mdui-card mdui-m-y-3">
   <div class="mdui-card-primary">
     <div class="mdui-card-primary-title mdui-text-color-theme-accent"><?php $this->title(); ?></div>
-    <?php if (!empty($this->options->article) && in_array('author', $this->options->article)): ?>
+    <?php if ($this->fields->date == "show" || (!empty($this->options->article) && in_array('author', $this->options->article))): ?>
       <div class="mdui-card-primary-subtitle mdui-text-color-theme-text">
-        <span> |</span><i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+        <?php if ($this->fields->date == "show"): ?>
+          <?php $this->date(); ?>
+        <?php endif; ?>
+        <?php if (!empty($this->options->article) && in_array('author', $this->options->article)): ?>
+          <?php if ($this->fields->date == "show"): ?><span> |</span><?php endif; ?>
+          <i class="mdui-icon materiality-icons">&#xe904;</i><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+        <?php endif; ?>
       </div>
     <?php endif; ?>
   </div>

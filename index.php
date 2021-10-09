@@ -1,10 +1,10 @@
 <?php
 /**
- * 一款简洁并专注于显示文字内容的Material Design风格Typecho 主题，基于<a href="https://www.mdui.org/">MDUI</a>
+ * 一款简洁并专注于显示文字内容的 Material Design 风格 Typecho 主题，基于 <a href="https://www.mdui.org/">MDUI</a>
  *
  * @package materiality-typecho-theme
  * @author EAimTY
- * @version 4.8.8
+ * @version 4.8.9
  * @link https://www.eaimty.com/
  */
 ?>
