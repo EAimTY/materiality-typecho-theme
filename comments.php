@@ -13,7 +13,7 @@
 <div id="<?php $comments->theId(); ?>" class="mdui-card mdui-m-y-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
   <div id="<?php $comments->theId(); ?>-anchor" class="anchor"></div>
   <div class="mdui-card-header">
-    <div class="mdui-card-header-avatar"><img class="avatar" src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=__DEFAULT__GRAVATAR__" alt="<?php $comments->author(); ?>"></div>
+    <div class="mdui-card-header-avatar"><img class="avatar" width="40" height="40" src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=__DEFAULT__GRAVATAR__" alt="<?php $comments->author(0, 1); ?>"></div>
     <div name="comment-author" class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
     <div class="mdui-card-header-subtitle"><?php $comments->date(); ?></div>
   </div>
