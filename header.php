@@ -4,9 +4,9 @@
 <?php endif; ?>
 <?php outputStart(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="zh">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="renderer" content="webkit" />
     <meta charset="<?php $this->options->charset(); ?>" />
@@ -88,14 +88,14 @@
     </header>
     <div class="mdui-drawer<?php if (!empty($this->options->drawer) && in_array('hidden', $this->options->drawer)): ?> mdui-drawer-close<?php endif; ?>" id="drawer">
       <div class="billboard">
-        <a href="<?php $this->options->siteUrl(); ?>" class="logo mdui-m-y-2 mdui-m-l-2" style="background:url('<?php $this->options->avatar(); ?>');background-size:contain"></a>
+        <div class="logo mdui-m-y-2 mdui-m-l-2" style="background:url('<?php $this->options->avatar(); ?>');background-size:contain"></div>
         <div class="description mdui-m-x-2 mdui-text-color-white-text mdui-valign"><?php $this->options->description(); ?></div>
       </div>
       <div class="mdui-list" mdui-collapse="{accordion: true}">
         <?php if (!empty($this->options->drawer) && in_array('search', $this->options->drawer)): ?>
           <form class="mdui-p-t-0 mdui-m-x-2 mdui-textfield mdui-textfield-floating-label" method="post">
-            <label class="mdui-textfield-label">搜索</label>
-            <input class="mdui-textfield-input" type="text" autocomplete="new-password" name="s" />
+            <label for="search" class="mdui-textfield-label">搜索</label>
+            <input id="search" class="mdui-textfield-input" type="text" autocomplete="new-password" name="s" />
           </form>
           <div class="mdui-divider"></div>
         <?php endif; ?>

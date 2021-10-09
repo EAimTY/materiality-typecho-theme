@@ -13,7 +13,7 @@
 <div id="<?php $comments->theId(); ?>" class="mdui-card mdui-m-y-3<?php if ($comments->levels > 0) { echo ' comment-child'; $comments->levelsAlt(' comment-level-odd', ' comment-level-even'); } else { echo ' comment-parent'; } $comments->alt(' comment-odd', ' comment-even'); echo $commentClass; ?>">
   <div id="<?php $comments->theId(); ?>-anchor" class="anchor"></div>
   <div class="mdui-card-header">
-    <div class="mdui-card-header-avatar"><img class="avatar" src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=__DEFAULT__GRAVATAR__"></div>
+    <div class="mdui-card-header-avatar"><img class="avatar" src="https://gravatar.loli.net/avatar/<?php echo md5($comments->mail); ?>?s=40&d=__DEFAULT__GRAVATAR__" alt="<?php $comments->author(); ?>"></div>
     <div name="comment-author" class="mdui-card-header-title mdui-text-color-theme-accent"><?php $comments->author(); ?></div>
     <div class="mdui-card-header-subtitle"><?php $comments->date(); ?></div>
   </div>
@@ -50,27 +50,27 @@
             <?php else: ?>
               <div class="mdui-textfield mdui-textfield-floating-label">
                 <i class="mdui-icon materiality-icons">&#xe910;</i>
-                <label class="mdui-textfield-label">称呼</label>
-                <input name="author" class="mdui-textfield-input" type="text" autocomplete="new-password" value="<?php $this->remember('author'); ?>" required />
+                <label for="author" class="mdui-textfield-label">称呼</label>
+                <input name="author" id="author" class="mdui-textfield-input" type="text" autocomplete="new-password" value="<?php $this->remember('author'); ?>" required />
                 <div class="mdui-textfield-error">请填写称呼</div>
               </div>
               <div class="mdui-textfield mdui-textfield-floating-label">
                 <i class="mdui-icon materiality-icons">&#xe911;</i>
-                <label class="mdui-textfield-label">E-mail</label>
-                <input name="mail" class="mdui-textfield-input" type="email" autocomplete="new-password" value="<?php $this->remember('mail'); ?>" required />
+                <label for="mail" class="mdui-textfield-label">E-mail</label>
+                <input name="mail" id="mail" class="mdui-textfield-input" type="email" autocomplete="new-password" value="<?php $this->remember('mail'); ?>" required />
                 <div class="mdui-textfield-error">请填写合法的电子邮箱地址</div>
               </div>
               <div class="mdui-textfield mdui-textfield-floating-label">
                 <i class="mdui-icon materiality-icons">&#xe90c;</i>
-                <label class="mdui-textfield-label">网站</label>
-                <input name="url" class="mdui-textfield-input" type="url" autocomplete="new-password" value="<?php $this->remember('url'); ?>" />
+                <label for="url" class="mdui-textfield-label">网站</label>
+                <input name="url" id="url" class="mdui-textfield-input" type="url" autocomplete="new-password" value="<?php $this->remember('url'); ?>" />
                 <div class="mdui-textfield-error">请填写合法的网站地址</div>
               </div>
             <?php endif; ?>
             <div class="mdui-textfield mdui-textfield-floating-label">
               <i class="mdui-icon materiality-icons">&#xe912;</i>
-              <label class="mdui-textfield-label">内容</label>
-              <textarea name="text" class="mdui-textfield-input" type="text" required><?php $this->remember('text'); ?></textarea>
+              <label for="text" class="mdui-textfield-label">内容</label>
+              <textarea name="text" id="text" class="mdui-textfield-input" type="text" required><?php $this->remember('text'); ?></textarea>
               <div class="mdui-textfield-error">请填写内容</div>
             </div>
           </div>

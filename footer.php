@@ -7,19 +7,19 @@
           <a href="mailto:<?php $this->options->email(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '邮箱'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe911;</i></a>
         <?php endif; ?>
         <?php if ($this->options->github): ?>
-          <a href="https://github.com/<?php $this->options->github(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'GitHub'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe915;</i></a>
+          <a href="https://github.com/<?php $this->options->github(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" rel="external noopener" mdui-tooltip="{content: 'GitHub'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe915;</i></a>
         <?php endif; ?>
         <?php if ($this->options->twitter): ?>
-          <a href="https://twitter.com/<?php $this->options->twitter(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Twitter'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe916;</i></a>
+          <a href="https://twitter.com/<?php $this->options->twitter(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" rel="external noopener" mdui-tooltip="{content: 'Twitter'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe916;</i></a>
         <?php endif; ?>
         <?php if ($this->options->facebook): ?>
-          <a href="https://www.facebook.com/<?php $this->options->facebook(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Facebook'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe917;</i></a>
+          <a href="https://www.facebook.com/<?php $this->options->facebook(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" rel="external noopener" mdui-tooltip="{content: 'Facebook'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe917;</i></a>
         <?php endif; ?>
         <?php if ($this->options->weibo): ?>
-          <a href="<?php $this->options->weibo(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '微博'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe918;</i></a>
+          <a href="<?php $this->options->weibo(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" rel="external noopener" mdui-tooltip="{content: '微博'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe918;</i></a>
         <?php endif; ?>
         <?php if ($this->options->netease_music): ?>
-          <a href="<?php $this->options->netease_music(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '网易云音乐'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe919;</i></a>
+          <a href="<?php $this->options->netease_music(); ?>" class="mdui-btn mdui-btn-icon mdui-ripple" rel="external noopener" mdui-tooltip="{content: '网易云音乐'}" target="_blank"><i class="mdui-icon materiality-icons">&#xe919;</i></a>
         <?php endif; ?>
       </div>
     </div>
@@ -28,10 +28,10 @@
     </div>
     <div class="footer-credit mdui-col-xs-3 mdui-valign">
       <div class="mdui-center">
-        <div>Powered by <a href="http://typecho.org/" target="_blank">Typecho)))</a></div>
-        <div>and Theme <a href="https://www.eaimty.com/theme.html" target="_blank">materiality</a></div>
+        <div>Powered by <a href="http://typecho.org/" rel="external noopener" target="_blank">Typecho)))</a></div>
+        <div>and Theme <a href="https://www.eaimty.com/theme.html" rel="external noopener" target="_blank">materiality</a></div>
         <?php if ($this->options->miibeian): ?>
-          <div><a href="http://www.beian.miit.gov.cn/" target="_blank"><?php $this->options->miibeian(); ?></a></div>
+          <div><a href="http://www.beian.miit.gov.cn/" rel="external noopener" target="_blank"><?php $this->options->miibeian(); ?></a></div>
         <?php endif; ?>
       </div>
     </div>
