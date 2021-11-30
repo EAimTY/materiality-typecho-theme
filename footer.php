@@ -31,7 +31,7 @@
         <div>Powered by <a href="http://typecho.org/" rel="external noopener" target="_blank">Typecho)))</a></div>
         <div>and Theme <a href="https://www.eaimty.com/theme.html" rel="external noopener" target="_blank">materiality</a></div>
         <?php if ($this->options->miibeian): ?>
-          <div><a href="http://www.beian.miit.gov.cn/" rel="external noopener" target="_blank"><?php $this->options->miibeian(); ?></a></div>
+          <div><a href="http://beian.miit.gov.cn/" rel="external noopener" target="_blank"><?php $this->options->miibeian(); ?></a></div>
         <?php endif; ?>
       </div>
     </div>
